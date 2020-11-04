@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Player : MonoBehaviour
+
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float sensitivity = 90.0f;
     private Transform cameraTransform = null;
     private float yRotation = 0.0f;
     private CharacterController controller;
+    private Rigidbody boody;
+    
 
     private void Awake()
     {
+        boody = GetComponent<Rigidbody>();
+        Assert.IsNotNull(boody);
+
         var camera = GetComponentInChildren<Camera>();
         Assert.IsNotNull(camera);
         cameraTransform = camera.transform;
@@ -31,7 +37,10 @@ public class Player : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(yRotation, 0.0f, 0.0f);
         transform.Rotate(Vector3.up * mouseX);
 
-        Vector3 movementVector = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
+        if(controller.isGrounded)
+            boody.velocity = Vector3.zero;
+
+        Vector3 movementVector = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical") + transform.up * boody.velocity.y;
         controller.Move(movementVector * speed * Time.deltaTime);
     }
 }
