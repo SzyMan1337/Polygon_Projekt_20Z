@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using System.Collections.Generic;
 
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField] private Enemy enemyPrefab;
-    [SerializeField] private int numberOfEnemiesToSpawn = 0;
+    [SerializeField] private Enemy enemyPrefab = null;
     [SerializeField] private BoxCollider[] spawnAreas;
-    [SerializeField] private Transform enemyMovementPoint;
+    [SerializeField] private Transform enemyMovementDestination = null;
+    [SerializeField, Range(0.0f, 1000.0f)] private int numberOfEnemiesToSpawn = 0;
     private const float SPAWN_HEIGHT = 1.0f;
 
 
@@ -15,11 +16,15 @@ public class WaveManager : MonoBehaviour
     {
         Assert.IsNotNull(enemyPrefab); 
         Assert.IsTrue(spawnAreas.Length > 0);
+        var spawnAreasSet = new HashSet<BoxCollider>();
         foreach(var spawnArea in spawnAreas)
         {
             Assert.IsNotNull(spawnArea);
+            Assert.IsFalse(spawnAreasSet.Contains(spawnArea));
+            spawnAreasSet.Add(spawnArea);
         }
         //TODO: sprawdzanie duplikatów
+        Assert.IsNotNull(enemyMovementDestination);
     }
 
     private void Start()
@@ -32,8 +37,7 @@ public class WaveManager : MonoBehaviour
             spawnPosition.x = spawningArea.bounds.extents.x * Random.Range(-1.0f, 1.0f) + spawningArea.transform.position.x;
             spawnPosition.z = spawningArea.bounds.extents.z * Random.Range(-1.0f, 1.0f) + spawningArea.transform.position.z;
             var newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            newEnemy.Destination = new Vector3(enemyMovementPoint.position.x, SPAWN_HEIGHT, enemyMovementPoint.position.z);
-            Debug.Log("Enemy has spawned"); //TODO: do wywalenia potem
+            newEnemy.Destination = new Vector3(enemyMovementDestination.position.x, SPAWN_HEIGHT, enemyMovementDestination.position.z);
             --numberOfEnemiesToSpawn;
         }
     }

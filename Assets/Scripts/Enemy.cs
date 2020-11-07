@@ -4,10 +4,11 @@ using UnityEngine.Assertions;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float speed = 2.0f;
-    private Rigidbody rigidbody;
+    [SerializeField, Range(0.0f, 1000.0f)] private float speed = 2.0f;
+    private new Rigidbody rigidbody = null;
 
     private const float MOVEMENT_THRESHOLD = 2.0f;
+
 
     public Vector3 Destination { get; set; }
 

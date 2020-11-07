@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 10.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float maxHealth = 10.0f;
     private float currentHealth = 0.0f;
 
 

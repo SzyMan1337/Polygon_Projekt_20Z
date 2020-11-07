@@ -4,8 +4,8 @@ using UnityEngine.Assertions;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 10.0f;
-    [SerializeField] private float lifetime = 5.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float speed = 10.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float lifetime = 5.0f;
 
 
     private void Awake()

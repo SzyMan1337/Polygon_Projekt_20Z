@@ -301,14 +301,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4055259757369897726, guid: 16c44bce424e59048beec47da264bd96, type: 3}
-  numberOfEnemiesToSpawn: 5
   spawnAreas:
   - {fileID: 201520216}
   - {fileID: 572244134}
   - {fileID: 1136389784}
   - {fileID: 252733331}
   - {fileID: 740457052}
-  enemyMovementPoint: {fileID: 583180622}
+  enemyMovementDestination: {fileID: 583180622}
+  numberOfEnemiesToSpawn: 24
 --- !u!1 &558106667
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583180622}
   m_Layer: 0
-  m_Name: TargetArea
+  m_Name: EnemyMovementDestination
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

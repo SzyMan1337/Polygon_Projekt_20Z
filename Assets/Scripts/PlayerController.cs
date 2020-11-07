@@ -4,8 +4,8 @@ using UnityEngine.Assertions;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 10.0f;
-    [SerializeField] private float sensitivity = 90.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float speed = 10.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float sensitivity = 90.0f;
     private Transform cameraTransform = null;
     private float yRotation = 0.0f;
     private CharacterController controller;
