@@ -6,12 +6,11 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 10.0f;
     [SerializeField] private float lifetime = 5.0f;
-    private Rigidbody body = null;
 
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody>();
+        var body = GetComponent<Rigidbody>();
         Assert.IsNotNull(body);
         body.velocity = transform.forward * speed;
     }

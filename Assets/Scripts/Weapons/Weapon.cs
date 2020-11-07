@@ -6,8 +6,8 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private Projectile projectilePrefab = null;
     [SerializeField] private Transform barrelEnd = null;
-    [SerializeField] private float reloadTime = 0.2f;
-    private float timeToShoot = 0.0f;
+    [SerializeField] private float timeBetweenShots = 0.2f;
+    private float shotCooldown = 0.0f;
 
 
     private void Awake()
@@ -18,14 +18,17 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetMouseButton(0)) && (timeToShoot <= 0.0f))
+        if (shotCooldown <= 0.0f)
         {
-            timeToShoot = reloadTime;
-            Instantiate(projectilePrefab, barrelEnd.position, barrelEnd.rotation);
+            if (Input.GetMouseButton(0))
+            {
+                shotCooldown = timeBetweenShots;
+                Instantiate(projectilePrefab, barrelEnd.position, barrelEnd.rotation);
+            }
         }
-        else if(timeToShoot > 0)
+        else
         {
-            timeToShoot -= Time.deltaTime;
+            shotCooldown -= Time.deltaTime;
         }
     }
 }
