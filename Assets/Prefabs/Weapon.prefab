@@ -158,3 +158,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2257142059207121628, guid: a0322f6c4d131584595023670d29101e, type: 3}
   barrelEnd: {fileID: 3640372659217029540}
+  reloadTime: 0.1
