@@ -37,7 +37,6 @@ public class WaveManager : MonoBehaviour
             spawnPosition.x = spawningArea.bounds.extents.x * Random.Range(-1.0f, 1.0f) + spawningArea.transform.position.x;
             spawnPosition.z = spawningArea.bounds.extents.z * Random.Range(-1.0f, 1.0f) + spawningArea.transform.position.z;
             var newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            newEnemy.Destination = new Vector3(enemyMovementDestination.position.x, SPAWN_HEIGHT, enemyMovementDestination.position.z);
             --numberOfEnemiesToSpawn;
         }
     }

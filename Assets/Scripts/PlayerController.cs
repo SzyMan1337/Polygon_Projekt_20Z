@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour
     private float yRotation = 0.0f;
     private CharacterController controller;
     private Rigidbody body;
-    private HealthComponent playerHealth;
+    private HealthComponent health;
     private Weapon weapon;
 
 
-    public HealthComponent PlayerHealth => playerHealth;
+    public HealthComponent Health => health;
 
 
     private void Awake()
@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
         Assert.IsNotNull(controller);
         Cursor.lockState = CursorLockMode.Locked;
 
-        playerHealth = GetComponent<HealthComponent>();
-        Assert.IsNotNull(playerHealth);
+        health = GetComponent<HealthComponent>();
+        Assert.IsNotNull(health);
 
         weapon = GetComponentInChildren<Weapon>();
         Assert.IsNotNull(weapon);
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        if (playerHealth.IsAlive)
+        if (health.IsAlive)
         {
             float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
