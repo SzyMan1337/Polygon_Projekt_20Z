@@ -18,17 +18,16 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+        if(shotCooldown > 0.0f)
+            shotCooldown -= Time.deltaTime;
+    }
+
+    public void Shoot()
+    {
         if (shotCooldown <= 0.0f)
         {
-            if (Input.GetMouseButton(0))
-            {
-                shotCooldown = timeBetweenShots;
-                Instantiate(projectilePrefab, barrelEnd.position, barrelEnd.rotation);
-            }
-        }
-        else
-        {
-            shotCooldown -= Time.deltaTime;
+            shotCooldown = timeBetweenShots;
+            Instantiate(projectilePrefab, barrelEnd.position, barrelEnd.rotation);
         }
     }
 }
