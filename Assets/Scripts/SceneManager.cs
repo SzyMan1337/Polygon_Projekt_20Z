@@ -4,13 +4,13 @@ using UnityEngine.Assertions;
 
 public class SceneManager : MonoBehaviour
 {
-    public GameObject player;
-
     private static SceneManager instance;
-
+    private GameObject player;
+    
 
     public static SceneManager Instance => instance;
-   
+    public GameObject Player => player;
+
 
     private void Awake()
     {
