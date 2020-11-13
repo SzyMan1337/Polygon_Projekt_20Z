@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0.0f, 10.0f)] private float aimSpeed = 0.1f;
     private Rigidbody rigidbody = null;
     private const float MOVEMENT_THRESHOLD = 20.0f;
+    private HealthComponent health;
+
+    public HealthComponent Health => health;
 
 
     private void Awake()
