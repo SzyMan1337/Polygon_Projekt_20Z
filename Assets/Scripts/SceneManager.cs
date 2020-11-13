@@ -5,11 +5,11 @@ using UnityEngine.Assertions;
 public class SceneManager : MonoBehaviour
 {
     private static SceneManager instance;
-    private GameObject player;
+    private PlayerController player;
     
 
     public static SceneManager Instance => instance;
-    public GameObject Player => player;
+    public PlayerController Player => player;
 
 
     private void Awake()
@@ -21,7 +21,7 @@ public class SceneManager : MonoBehaviour
         }
         instance = this;
 
-        player = FindObjectOfType<PlayerController>()?.gameObject;
+        player = FindObjectOfType<PlayerController>();
         Assert.IsNotNull(player);
     }
 }
