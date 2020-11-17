@@ -21,7 +21,17 @@ public class Enemy : MonoBehaviour
         Assert.IsNotNull(rigidbody);
         weapon = GetComponentInChildren<Weapon>();
         Assert.IsNotNull(weapon);
+        health = GetComponent<HealthComponent>();
+        Assert.IsNotNull(health);
     }
+
+
+    private void Start()
+    {
+        EndScreen endScreen = FindObjectOfType<EndScreen>();
+        Health.OnDeath += endScreen.IncreasPoints;
+    }
+
 
     private void Update()
     {

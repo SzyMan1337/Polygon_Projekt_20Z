@@ -6,7 +6,7 @@ using TMPro;
 public class EndScreen : MonoBehaviour
 {
     private Canvas canvas;
-    private int points = 0;
+    public int points = 0;
 
     private void Awake()
     {
@@ -17,43 +17,31 @@ public class EndScreen : MonoBehaviour
         var button = GetComponentInChildren<Button>();
         Assert.IsNotNull(button);
         button.onClick.AddListener(Restart);
+    }
 
+    public void OnPlayerDeath()
+    {
         var text = canvas.GetComponentInChildren<TextMeshProUGUI>();
         Assert.IsNotNull(text);
         text.text = "Score: " + points;
-    }
 
-    private void Start()
-    {
-        var player = SceneManager.Instance?.Player;
-        Assert.IsNotNull(player);
-        player.Health.OnDeath += OnPlayerDeath;
-                
-    }
+        Cursor.lockState = CursorLockMode.None;
 
-    private void Update()
-    {
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
-        foreach (var enemy in enemies)
-        {
-            enemy.Health.OnDeath += CountPoints;
-        }
-    }
-
-
-    private void OnPlayerDeath()
-    {
         canvas.gameObject.SetActive(true);
     }
 
     private void Restart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.Instance.name);
+
+        Cursor.lockState = CursorLockMode.Locked;
+
         canvas.gameObject.SetActive(false);
+        
         points = 0;
     }
 
-    private void CountPoints()
+    public void IncreasPoints()
     {
         points++;
     }
