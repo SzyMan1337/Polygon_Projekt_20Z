@@ -9,32 +9,48 @@ public class EndScreen : MonoBehaviour
     private Canvas canvas;
     private int points = 0;
     private TextMeshProUGUI text;
-
+    private new Camera camera;
     
     private void Awake()
     {
+        camera = GetComponentInChildren<Camera>();
+
         canvas = GetComponentInChildren<Canvas>();
         Assert.IsNotNull(canvas);
-        //canvas.gameObject.SetActive(false);
 
-        var button = GetComponentInChildren<Button>();
+        var button = canvas.GetComponentInChildren<Button>();
         Assert.IsNotNull(button);
         button.onClick.AddListener(Restart);
-
+        
         text = canvas.GetComponentInChildren<TextMeshProUGUI>();
         Assert.IsNotNull(text);
 
+        camera.gameObject.SetActive(false);
         canvas.gameObject.SetActive(false);
     }
 
 
     private void Start()
     {
-        Enemy enemy = FindObjectOfType<Enemy>();
-        Assert.IsNotNull(enemy);
-        enemy.Health.OnDeath += IncreasePoints;
         PlayerController player = SceneManager.Instance?.Player; 
         player.Health.OnDeath += OnPlayerDeath;
+    }
+
+
+    private void Update()
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+
+        foreach (var en in enemies)
+        {
+            en.Health.OnDeath -= IncreasePoints;
+            en.Health.OnDeath += IncreasePoints;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Restart();
+        }
 
     }
 
@@ -44,15 +60,15 @@ public class EndScreen : MonoBehaviour
         text.text = "Score: " + points;
 
         Cursor.lockState = CursorLockMode.None;
-
+        camera.gameObject.SetActive(true);
         canvas.gameObject.SetActive(true);
     }
 
 
     private void Restart()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.Instance.name);
+        camera.gameObject.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
 

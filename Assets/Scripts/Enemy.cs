@@ -63,11 +63,6 @@ public class Enemy : MonoBehaviour
                 weapon.transform.localRotation = Quaternion.identity;
             }
 
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Health.ApplyDamage(4);
-            }
         }   
     }
 }

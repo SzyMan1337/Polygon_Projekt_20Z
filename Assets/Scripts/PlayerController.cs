@@ -77,11 +77,6 @@ public class PlayerController : MonoBehaviour
                 weapon.Shoot();
             }
 
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                Health.ApplyDamage(4);
-            }
-
         }
     }
 }
