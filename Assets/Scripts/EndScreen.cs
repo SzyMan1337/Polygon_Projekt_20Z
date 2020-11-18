@@ -47,11 +47,6 @@ public class EndScreen : MonoBehaviour
             en.Health.OnDeath += IncreasePoints;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Restart();
-        }
-
     }
 
 
