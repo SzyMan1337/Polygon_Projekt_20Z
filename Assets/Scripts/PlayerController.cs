@@ -36,14 +36,6 @@ public class PlayerController : MonoBehaviour
         Assert.IsNotNull(weapon);
     }
 
-    private void Start()
-    {
-        EndScreen endScreen = FindObjectOfType<EndScreen>();
-        Assert.IsNotNull(endScreen);
-
-        Health.OnDeath += endScreen.OnPlayerDeath;
-    }
-
 
     public void Update()
     {
@@ -84,6 +76,12 @@ public class PlayerController : MonoBehaviour
             {
                 weapon.Shoot();
             }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Health.ApplyDamage(4);
+            }
+
         }
     }
 }

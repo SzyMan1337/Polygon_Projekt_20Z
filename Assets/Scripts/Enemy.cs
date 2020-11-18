@@ -26,13 +26,6 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private void Start()
-    {
-        EndScreen endScreen = FindObjectOfType<EndScreen>();
-        Health.OnDeath += endScreen.IncreasPoints;
-    }
-
-
     private void Update()
     {
         var player = SceneManager.Instance?.Player;
@@ -68,6 +61,12 @@ public class Enemy : MonoBehaviour
             else
             {
                 weapon.transform.localRotation = Quaternion.identity;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Health.ApplyDamage(4);
             }
         }   
     }
