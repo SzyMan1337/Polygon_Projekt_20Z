@@ -10,7 +10,10 @@ public class EndScreen : MonoBehaviour
     private int points = 0;
     private TextMeshProUGUI text;
     private new Camera camera;
+    private Button button;
     
+   
+
     private void Awake()
     {
         camera = GetComponentInChildren<Camera>();
@@ -18,10 +21,9 @@ public class EndScreen : MonoBehaviour
         canvas = GetComponentInChildren<Canvas>();
         Assert.IsNotNull(canvas);
 
-        var button = canvas.GetComponentInChildren<Button>();
+        button = canvas.GetComponentInChildren<Button>();
         Assert.IsNotNull(button);
-        button.onClick.AddListener(Restart);
-        
+
         text = canvas.GetComponentInChildren<TextMeshProUGUI>();
         Assert.IsNotNull(text);
 
@@ -32,6 +34,9 @@ public class EndScreen : MonoBehaviour
 
     private void Start()
     {
+        button.onClick.RemoveAllListeners();
+
+        button.onClick.AddListener(Restart);
         PlayerController player = SceneManager.Instance?.Player; 
         player.Health.OnDeath += OnPlayerDeath;
     }
@@ -53,16 +58,15 @@ public class EndScreen : MonoBehaviour
     public void OnPlayerDeath()
     {
         text.text = "Score: " + points;
-
-        Cursor.lockState = CursorLockMode.None;
         camera.gameObject.SetActive(true);
         canvas.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
 
-    private void Restart()
+    void Restart()
     {
-        camera.gameObject.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
