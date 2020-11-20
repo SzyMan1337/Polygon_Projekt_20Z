@@ -383,7 +383,6 @@ MonoBehaviour:
   - {fileID: 2072201442}
   - {fileID: 740144884}
   - {fileID: 1809574295}
-  enemyMovementDestination: {fileID: 1693559328}
   numberOfEnemiesToSpawn: 5
 --- !u!1001 &740144882
 PrefabInstance:
@@ -598,6 +597,18 @@ PrefabInstance:
     - target: {fileID: 1040166918184403657, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351230798798088734, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902866111859203218, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902866111859203218, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
