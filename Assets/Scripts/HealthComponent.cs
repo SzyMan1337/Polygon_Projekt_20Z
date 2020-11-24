@@ -9,7 +9,7 @@ public class HealthComponent : MonoBehaviour
 
 
     public event System.Action OnDeath;
-    public event System.Action HealthChange;
+    public event System.Action OnHealthChange;
 
 
     public bool IsAlive => currentHealth > 0.0f;
@@ -29,10 +29,7 @@ public class HealthComponent : MonoBehaviour
         if (IsAlive)
         {
             currentHealth = Mathf.Max(currentHealth - amount, 0.0f);
-            if (HealthChange != null)
-            {
-                HealthChange();
-            }
+            OnHealthChange?.Invoke();
             if (currentHealth <= 0.0f)
             {
                 OnDeath?.Invoke();
@@ -47,9 +44,9 @@ public class HealthComponent : MonoBehaviour
         if (IsAlive)
         {
             currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-            if (HealthChange != null)
+            if (OnHealthChange != null)
             {
-                HealthChange();
+                OnHealthChange();
             }
         }
     }

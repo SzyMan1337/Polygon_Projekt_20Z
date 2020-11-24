@@ -15,12 +15,12 @@ public class HealthBar : MonoBehaviour
         healthComponent = GetComponentInParent<HealthComponent>();
         Assert.IsNotNull(healthComponent);
 
-        healthComponent.HealthChange += ChangeHealth;
+        healthComponent.OnHealthChange += OnChangeHealth;
         slider.maxValue = healthComponent.MaxHealth;
         slider.value = healthComponent.MaxHealth;
     }
 
-    private void ChangeHealth()
+    private void OnChangeHealth()
     {
         slider.value = healthComponent.CurrentHealth;
     }
