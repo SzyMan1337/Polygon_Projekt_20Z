@@ -11,9 +11,10 @@ public class Enemy : MonoBehaviour
     private Rigidbody rigidbody = null;
     private const float MOVEMENT_THRESHOLD = 20.0f;
     private HealthComponent health;
+    public static event System.Action OnDeath;
 
     public HealthComponent Health => health;
-
+    
 
     private void Awake()
     {
@@ -23,8 +24,8 @@ public class Enemy : MonoBehaviour
         Assert.IsNotNull(weapon);
         health = GetComponent<HealthComponent>();
         Assert.IsNotNull(health);
+        health.OnDeath += OnDeath;
     }
-
 
     private void Update()
     {

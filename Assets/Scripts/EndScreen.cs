@@ -11,8 +11,7 @@ public class EndScreen : MonoBehaviour
     private TextMeshProUGUI text;
     private new Camera camera;
     private Button button;
-    
-   
+
 
     private void Awake()
     {
@@ -27,10 +26,11 @@ public class EndScreen : MonoBehaviour
         text = canvas.GetComponentInChildren<TextMeshProUGUI>();
         Assert.IsNotNull(text);
 
+        Enemy.OnDeath += IncreasePoints;
+
         camera.gameObject.SetActive(false);
         canvas.gameObject.SetActive(false);
     }
-
 
     private void Start()
     {
@@ -41,35 +41,18 @@ public class EndScreen : MonoBehaviour
         player.Health.OnDeath += OnPlayerDeath;
     }
 
-
-    private void Update()
-    {
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
-
-        foreach (var en in enemies)
-        {
-            en.Health.OnDeath -= IncreasePoints;
-            en.Health.OnDeath += IncreasePoints;
-        }
-
-    }
-
-
     public void OnPlayerDeath()
     {
         text.text = "Score: " + points;
         camera.gameObject.SetActive(true);
         canvas.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
-
     }
-
 
     void Restart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
-
 
     public void IncreasePoints()
     {
