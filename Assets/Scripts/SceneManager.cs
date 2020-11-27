@@ -6,10 +6,11 @@ public class SceneManager : MonoBehaviour
 {
     private static SceneManager instance;
     private PlayerController player;
-    
+    private int points = 0;
 
     public static SceneManager Instance => instance;
     public PlayerController Player => player;
+    public int Points => points;
 
 
     private void Awake()
@@ -23,5 +24,19 @@ public class SceneManager : MonoBehaviour
 
         player = FindObjectOfType<PlayerController>();
         Assert.IsNotNull(player);
+
+        Enemy.OnAnyEnemyDeath += IncreasePoints;
     }
+
+    private void OnDestroy()
+    {
+        Enemy.OnAnyEnemyDeath -= IncreasePoints;
+    }
+
+    public void IncreasePoints()
+    {
+        ++points;
+        Debug.Log(points + gameObject.name);
+    }
+
 }

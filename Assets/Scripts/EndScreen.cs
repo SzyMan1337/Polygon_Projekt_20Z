@@ -7,7 +7,6 @@ using TMPro;
 public class EndScreen : MonoBehaviour
 {
     private Canvas canvas;
-    private int points = 0;
     private TextMeshProUGUI text;
     private new Camera camera;
     private Button button;
@@ -26,8 +25,6 @@ public class EndScreen : MonoBehaviour
         text = canvas.GetComponentInChildren<TextMeshProUGUI>();
         Assert.IsNotNull(text);
 
-        Enemy.OnDeath += IncreasePoints;
-
         camera.gameObject.SetActive(false);
         canvas.gameObject.SetActive(false);
     }
@@ -43,6 +40,7 @@ public class EndScreen : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        int points = SceneManager.Instance.Points;
         text.text = "Score: " + points;
         camera.gameObject.SetActive(true);
         canvas.gameObject.SetActive(true);
@@ -53,10 +51,4 @@ public class EndScreen : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
-
-    public void IncreasePoints()
-    {
-        points++;
-    }
-
 }
