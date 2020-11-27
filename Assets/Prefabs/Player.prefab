@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   sensitivity: 200
+  footstepClip: {fileID: 8300000, guid: e3a8b8ec90cb5834cab7ec25378168a6, type: 3}
+  playerHitClip: {fileID: 8300000, guid: 1f2060630c9de1a4a8c1443a22802008, type: 3}
 --- !u!114 &3351230798798088734
 MonoBehaviour:
   m_ObjectHideFlags: 0

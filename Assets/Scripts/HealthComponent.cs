@@ -9,6 +9,7 @@ public class HealthComponent : MonoBehaviour
 
 
     public event System.Action OnDeath;
+    public event System.Action OnHit;
 
 
     public bool IsAlive => currentHealth > 0.0f;
@@ -32,7 +33,11 @@ public class HealthComponent : MonoBehaviour
             {
                 OnDeath?.Invoke();
                 Destroy(gameObject);
-            }  
+            }
+            else
+            {
+                OnHit?.Invoke();
+            }
         }
     }
 
