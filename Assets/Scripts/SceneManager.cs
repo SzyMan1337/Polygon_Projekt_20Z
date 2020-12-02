@@ -30,13 +30,16 @@ public class SceneManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (instance == this)
+        {
+            instance = null;
+        }
         Enemy.OnAnyEnemyDeath -= IncreasePoints;
     }
 
-    public void IncreasePoints()
+    private void IncreasePoints()
     {
         ++points;
         Debug.Log(points + gameObject.name);
     }
-
 }

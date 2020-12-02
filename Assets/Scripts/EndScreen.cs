@@ -47,7 +47,7 @@ public class EndScreen : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    void Restart()
+    private void Restart()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
