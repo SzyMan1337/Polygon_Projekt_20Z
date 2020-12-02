@@ -7,7 +7,6 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] private Enemy enemyPrefab = null;
     [SerializeField] private BoxCollider[] spawnAreas;
-    [SerializeField] private Transform enemyMovementDestination = null;
     [SerializeField, Range(0.0f, 1000.0f)] private int numberOfEnemiesToSpawn = 0;
     private const float SPAWN_HEIGHT = 1.0f;
 
@@ -23,8 +22,6 @@ public class WaveManager : MonoBehaviour
             Assert.IsFalse(spawnAreasSet.Contains(spawnArea));
             spawnAreasSet.Add(spawnArea);
         }
-        //TODO: sprawdzanie duplikatów
-        Assert.IsNotNull(enemyMovementDestination);
     }
 
     private void Start()
