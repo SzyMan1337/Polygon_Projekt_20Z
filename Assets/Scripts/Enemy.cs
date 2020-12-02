@@ -10,7 +10,11 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0.0f, 10.0f)] private float aimSpeed = 0.1f;
     private Rigidbody rigidbody = null;
     private const float MOVEMENT_THRESHOLD = 20.0f;
+    private HealthComponent health;
+    public static event System.Action OnAnyEnemyDeath;
 
+    public HealthComponent Health => health;
+    
 
     private void Awake()
     {
@@ -18,6 +22,9 @@ public class Enemy : MonoBehaviour
         Assert.IsNotNull(rigidbody);
         weapon = GetComponentInChildren<Weapon>();
         Assert.IsNotNull(weapon);
+        health = GetComponent<HealthComponent>();
+        Assert.IsNotNull(health);
+        health.OnDeath += OnAnyEnemyDeath;
     }
 
     private void Update()
@@ -56,6 +63,13 @@ public class Enemy : MonoBehaviour
             {
                 weapon.transform.localRotation = Quaternion.identity;
             }
+
         }   
     }
+
+    private void OnDestroy()
+    {
+        health.OnDeath -= OnAnyEnemyDeath;
+    }
+
 }
