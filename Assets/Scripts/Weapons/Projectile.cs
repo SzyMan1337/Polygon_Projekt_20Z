@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
             return;
         
         // Giving damage
-        var objectHealth = collision.gameObject.GetComponent<HealthComponent>();
+        var objectHealth = collision.gameObject.GetComponentInParent<HealthComponent>();
         if (objectHealth != null)
         {
             objectHealth.ApplyDamage(Damage);
