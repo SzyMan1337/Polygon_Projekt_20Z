@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: cc3e62d4bfec4b64eb1932f907ac9518
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -5678146719786170706
+    second: metarig|EnemyIdle
   externalObjects: {}
   materials:
     materialImportMode: 1
