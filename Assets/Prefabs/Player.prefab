@@ -135,9 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  sensitivity: 200
-  footstepClip: {fileID: 8300000, guid: e3a8b8ec90cb5834cab7ec25378168a6, type: 3}
-  playerHitClip: {fileID: 8300000, guid: 1f2060630c9de1a4a8c1443a22802008, type: 3}
+  sensitivity: 400
 --- !u!114 &3351230798798088734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab302a8bc2de4a42a01cc8ccccf3f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 50
 --- !u!1 &1040166919246304230
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640372659601486878, guid: 70650c6487366cb408ff600ffdf807b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3640372659601486878, guid: 70650c6487366cb408ff600ffdf807b8, type: 3}
       propertyPath: m_LocalPosition.z

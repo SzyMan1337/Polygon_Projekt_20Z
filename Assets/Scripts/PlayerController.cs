@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(playerHitClip);
     }
 
+
     public void Update()
     {
         if (health.IsAlive)
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
             {
                 weapon.Shoot();
             }
+
         }
     }
 }

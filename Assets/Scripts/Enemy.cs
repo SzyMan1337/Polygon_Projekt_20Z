@@ -8,40 +8,23 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 2.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float aimRange = 50.0f;
     [SerializeField, Range(0.0f, 10.0f)] private float aimSpeed = 0.1f;
-    [SerializeField] private AudioClip enemyHitClip;
-    [SerializeField] public GameObject enemyDeathPrefab;
     private Rigidbody rigidbody = null;
     private const float MOVEMENT_THRESHOLD = 20.0f;
-    private AudioSource audioSource;
-    private HealthComponent healthComponent;
+    private HealthComponent health;
+    public static event System.Action OnAnyEnemyDeath;
 
+    public HealthComponent Health => health;
+    
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         Assert.IsNotNull(rigidbody);
-
         weapon = GetComponentInChildren<Weapon>();
         Assert.IsNotNull(weapon);
-
-        audioSource = GetComponent<AudioSource>();
-        Assert.IsNotNull(audioSource);
-
-        healthComponent = GetComponent<HealthComponent>();
-        Assert.IsNotNull(healthComponent);
-        healthComponent.OnDeath += PlayAudioOnDeath;
-        healthComponent.OnHit += PlayAudioOnHit;
-    }
-
-    public void PlayAudioOnHit()
-    {
-        audioSource.PlayOneShot(enemyHitClip);
-    }
-
-    public void PlayAudioOnDeath()
-    {
-        var enemyDeath = Instantiate(enemyDeathPrefab, transform.position, transform.rotation);
-        Destroy(enemyDeath, 0.8f);
+        health = GetComponent<HealthComponent>();
+        Assert.IsNotNull(health);
+        health.OnDeath += OnAnyEnemyDeath;
     }
 
     private void Update()
@@ -80,6 +63,13 @@ public class Enemy : MonoBehaviour
             {
                 weapon.transform.localRotation = Quaternion.identity;
             }
+
         }   
     }
+
+    private void OnDestroy()
+    {
+        health.OnDeath -= OnAnyEnemyDeath;
+    }
+
 }
