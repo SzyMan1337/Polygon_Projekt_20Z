@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         Assert.IsNotNull(weapon);
     }
 
+
     public void Update()
     {
         if (health.IsAlive)
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
             {
                 weapon.Shoot();
             }
+
         }
     }
 }

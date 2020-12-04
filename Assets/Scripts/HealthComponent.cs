@@ -7,7 +7,6 @@ public class HealthComponent : MonoBehaviour
     [SerializeField, Range(1.0f, 1000.0f)] private float maxHealth = 10.0f;
     private float currentHealth = 1.0f;
 
-
     public event System.Action OnDeath;
     public event System.Action OnHealthChange;
 
