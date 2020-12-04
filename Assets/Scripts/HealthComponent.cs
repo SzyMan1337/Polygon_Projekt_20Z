@@ -43,10 +43,7 @@ public class HealthComponent : MonoBehaviour
         if (IsAlive)
         {
             currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-            if (OnHealthChange != null)
-            {
-                OnHealthChange();
-            }
+            OnHealthChange?.Invoke();
         }
     }
 }
