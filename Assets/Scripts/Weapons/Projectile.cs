@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 10.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float lifetime = 5.0f;
     [SerializeField] private float damage = 10.0f;
-    [SerializeField] public GameObject projectileHitWallPrefab;
+    [SerializeField] private GameObject projectileHitWallPrefab;
 
 
     public event System.Action OnHitWall;
@@ -24,14 +24,11 @@ public class Projectile : MonoBehaviour
     {
         var body = GetComponent<Rigidbody>();
         Assert.IsNotNull(body);
+
         body.velocity = transform.forward * speed;
         OnHitWall += PlayWallHitSound;
-    }
 
-    public void PlayWallHitSound()
-    {
-        var projectileHitWall = Instantiate(projectileHitWallPrefab, transform.position, transform.rotation);
-        Destroy(projectileHitWall, 0.5f);
+        Assert.IsNotNull(projectileHitWallPrefab);
     }
 
     private void Update()
@@ -64,5 +61,11 @@ public class Projectile : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    private void PlayWallHitSound()
+    {
+        var projectileHitWall = Instantiate(projectileHitWallPrefab, transform.position, transform.rotation);
+        Destroy(projectileHitWall, 0.5f);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
-using System.IO;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,15 +41,17 @@ public class PlayerController : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         Assert.IsNotNull(audioSource);
+
+        Assert.IsNotNull(footstepClip);
+        Assert.IsNotNull(playerHitClip);
     }
 
-    public void PlayAudioHit()
+    private void PlayAudioHit()
     {
         audioSource.PlayOneShot(playerHitClip);
     }
 
-
-    public void Update()
+    private void Update()
     {
         if (health.IsAlive)
         {
@@ -84,10 +86,10 @@ public class PlayerController : MonoBehaviour
             controller.Move(movementVector * speed * Time.deltaTime);
 
             // Sound of movement
-            if (controller.isGrounded && controller.velocity.magnitude > 2f && !audioSource.isPlaying)
+            if (controller.isGrounded && controller.velocity.magnitude > 2.0f && !audioSource.isPlaying)
             {
-                audioSource.volume = Random.Range(0.7f, 1f);
-                audioSource.pitch = Random.Range(0.7f, 1f);
+                audioSource.volume = Random.Range(0.7f, 1.0f);
+                audioSource.pitch = Random.Range(0.7f, 1.0f);
                 audioSource.Play();
             }
 
@@ -96,7 +98,6 @@ public class PlayerController : MonoBehaviour
             {
                 weapon.Shoot();
             }
-
         }
     }
 }

@@ -40,6 +40,5 @@ public class SceneManager : MonoBehaviour
     private void IncreasePoints()
     {
         ++points;
-        Debug.Log(points + gameObject.name);
     }
 }
