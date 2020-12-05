@@ -7,7 +7,9 @@ public class HealthComponent : MonoBehaviour
     [SerializeField, Range(1.0f, 1000.0f)] private float maxHealth = 10.0f;
     private float currentHealth = 1.0f;
 
+
     public event System.Action OnDeath;
+    public event System.Action OnHit;
 
 
     public bool IsAlive => currentHealth > 0.0f;
@@ -31,7 +33,11 @@ public class HealthComponent : MonoBehaviour
             {
                 OnDeath?.Invoke();
                 Destroy(gameObject);
-            }  
+            }
+            else
+            {
+                OnHit?.Invoke();
+            }
         }
     }
 
