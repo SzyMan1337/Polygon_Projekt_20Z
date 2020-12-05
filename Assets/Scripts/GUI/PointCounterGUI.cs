@@ -14,12 +14,12 @@ public class PointCounterGUI : MonoBehaviour
         Assert.IsNotNull(text);
 
         SceneManager.OnPointsGain += ChangePoints;
-        text.text = SceneManager.Instance.Points + " points";
+        ChangePoints();
     }
 
     private void ChangePoints()
     {
-        text.text = SceneManager.Instance.Points + " points";
+        text.text = SceneManager.Instance.Points.ToString();
     }
 
     private void OnDestroy()
