@@ -19,7 +19,7 @@ public class PointCounterGUI : MonoBehaviour
 
     private void ChangePoints()
     {
-        text.text = SceneManager.Instance.Points.ToString();
+        text.text = SceneManager.Instance?.Points.ToString();
     }
 
     private void OnDestroy()

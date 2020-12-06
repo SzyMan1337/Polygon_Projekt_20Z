@@ -17,6 +17,10 @@ public class HealthBar : MonoBehaviour
         Assert.IsNotNull(healthComponent);
 
         healthComponent.OnHealthChange += ChangeHealth;
+    }
+
+    private void Start()
+    {
         ChangeHealth();
     }
 
