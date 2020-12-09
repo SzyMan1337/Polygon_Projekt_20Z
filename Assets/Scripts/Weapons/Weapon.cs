@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour
         {
             shotCooldown = timeBetweenShots;
             var projectile = Instantiate(projectilePrefab, barrelEnd.position, barrelEnd.rotation);
-            projectile.Damage = damage;
+            //projectile.Damage = damage;
         }
     }
 }
