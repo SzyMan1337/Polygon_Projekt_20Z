@@ -7,10 +7,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Weapon weapon = null;
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 2.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float aimRange = 50.0f;
-    [SerializeField] private float MOVEMENT_THRESHOLD = 20.0f;
+    [SerializeField, Range(0.0f, 10.0f)] private float aimSpeed = 0.1f;
+    [SerializeField] private AudioClip enemyHitClip;
+    [SerializeField] private GameObject enemyDeathPrefab;
     private Rigidbody rigidbody = null;
+    private const float MOVEMENT_THRESHOLD = 20.0f;
     private HealthComponent health;
+    private AudioSource audioSource;
+
+
     public static event System.Action OnAnyEnemyDeath;
+
 
     public HealthComponent Health => health;
     
@@ -19,11 +26,21 @@ public class Enemy : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         Assert.IsNotNull(rigidbody);
+
         weapon = GetComponentInChildren<Weapon>();
         Assert.IsNotNull(weapon);
+
         health = GetComponent<HealthComponent>();
         Assert.IsNotNull(health);
         health.OnDeath += OnAnyEnemyDeath;
+        health.OnDeath += PlayAudioOnDeath;
+        health.OnHit += PlayAudioOnHit;
+
+        audioSource = GetComponent<AudioSource>();
+        Assert.IsNotNull(audioSource);
+
+        Assert.IsNotNull(enemyHitClip);
+        Assert.IsNotNull(enemyDeathPrefab);
     }
 
     private void Update()
@@ -62,7 +79,6 @@ public class Enemy : MonoBehaviour
             {
                 weapon.transform.localRotation = Quaternion.identity;
             }
-
         }   
     }
 
@@ -71,4 +87,14 @@ public class Enemy : MonoBehaviour
         health.OnDeath -= OnAnyEnemyDeath;
     }
 
+    private void PlayAudioOnHit()
+    {
+        audioSource.PlayOneShot(enemyHitClip);
+    }
+
+    private void PlayAudioOnDeath()
+    {
+        var enemyDeath = Instantiate(enemyDeathPrefab, transform.position, transform.rotation);
+        Destroy(enemyDeath, 0.8f);
+    }
 }

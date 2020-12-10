@@ -8,6 +8,8 @@ public class SceneManager : MonoBehaviour
     private PlayerController player;
     private int points = 0;
 
+    public static event System.Action OnPointsGain;
+
     public static SceneManager Instance => instance;
     public PlayerController Player => player;
     public int Points => points;
@@ -40,6 +42,6 @@ public class SceneManager : MonoBehaviour
     private void IncreasePoints()
     {
         ++points;
-        Debug.Log(points + gameObject.name);
+        OnPointsGain?.Invoke();
     }
 }

@@ -6,12 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 10.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float sensitivity = 90.0f;
+    [SerializeField] private AudioClip footstepClip;
+    [SerializeField] private AudioClip playerHitClip;
     private Camera camera = null;
     private float yRotation = 0.0f;
     private CharacterController controller;
     private Rigidbody body;
     private HealthComponent health;
     private Weapon weapon;
+    private AudioSource audioSource;
 
 
     public HealthComponent Health => health;
@@ -31,13 +34,24 @@ public class PlayerController : MonoBehaviour
 
         health = GetComponent<HealthComponent>();
         Assert.IsNotNull(health);
+        health.OnHit += PlayAudioHit;
 
         weapon = GetComponentInChildren<Weapon>();
         Assert.IsNotNull(weapon);
+
+        audioSource = GetComponent<AudioSource>();
+        Assert.IsNotNull(audioSource);
+
+        Assert.IsNotNull(footstepClip);
+        Assert.IsNotNull(playerHitClip);
     }
 
+    private void PlayAudioHit()
+    {
+        audioSource.PlayOneShot(playerHitClip);
+    }
 
-    public void Update()
+    private void Update()
     {
         if (health.IsAlive)
         {
@@ -71,12 +85,19 @@ public class PlayerController : MonoBehaviour
             Vector3 movementVector = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical") + transform.up * body.velocity.y;
             controller.Move(movementVector * speed * Time.deltaTime);
 
+            // Sound of movement
+            if (controller.isGrounded && controller.velocity.magnitude > 2.0f && !audioSource.isPlaying)
+            {
+                audioSource.volume = Random.Range(0.7f, 1.0f);
+                audioSource.pitch = Random.Range(0.7f, 1.0f);
+                audioSource.Play();
+            }
+
             // Shooting
             if (Input.GetMouseButton(0))
             {
                 weapon.Shoot();
             }
-
         }
     }
 }

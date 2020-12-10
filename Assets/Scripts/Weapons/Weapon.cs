@@ -9,12 +9,16 @@ public class Weapon : MonoBehaviour
     [SerializeField, Range(0.0f, 10.0f)] private float timeBetweenShots = 0.2f;
     private float shotCooldown = 0.0f;
     private float damage = 5.0f;
+    private AudioSource audioSource;
 
 
     private void Awake()
     {
         Assert.IsNotNull(projectilePrefab);
         Assert.IsNotNull(barrelEnd);
+
+        audioSource = GetComponent<AudioSource>();
+        Assert.IsNotNull(audioSource);
     }
 
     private void Update()
@@ -29,7 +33,8 @@ public class Weapon : MonoBehaviour
         {
             shotCooldown = timeBetweenShots;
             var projectile = Instantiate(projectilePrefab, barrelEnd.position, barrelEnd.rotation);
-            //projectile.Damage = damage;
+            projectile.Damage = damage;
+            audioSource.Play();
         }
     }
 }
