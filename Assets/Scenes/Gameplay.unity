@@ -2454,18 +2454,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1040166918184403656, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
-      propertyPath: groundDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040166918184403656, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
-      propertyPath: groundMask.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040166918184403656, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
-      propertyPath: gravity
-      value: -19.62
-      objectReference: {fileID: 0}
     - target: {fileID: 1040166918184403657, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
       propertyPath: m_Name
       value: Player

@@ -8,19 +8,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0.0f, 1000.0f)] private float sensitivity = 90.0f;
     [SerializeField] private AudioClip footstepClip;
     [SerializeField] private AudioClip playerHitClip;
-    [SerializeField] private float gravity = -19.62f;
-    [SerializeField] private float groundDistance = 0.4f;
-    [SerializeField] private float jumpHeight = 3f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float gravity = -19.62f;
+    [SerializeField] private float groundDistance = 0.2f;
+    [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashTime = 0.25f;
+    [SerializeField] private float dashCooldown = 1.25f;
+    private float nextDash = -1f;
     private bool isGrounded;
     private Vector3 velocity;
     private Camera camera = null;
     private float yRotation = 0.0f;
     private CharacterController controller;
-    //private Rigidbody body; 
     private HealthComponent health;
     private Weapon weapon;
     private AudioSource audioSource;
@@ -31,9 +32,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        //body = GetComponent<Rigidbody>();
-        //Assert.IsNotNull(body);
-
         camera = GetComponentInChildren<Camera>();
         Assert.IsNotNull(camera);
 
@@ -54,12 +52,7 @@ public class PlayerController : MonoBehaviour
         Assert.IsNotNull(footstepClip);
         Assert.IsNotNull(playerHitClip);
 
-        velocity = new Vector3();
-    }
-
-    private void PlayAudioHit()
-    {
-        audioSource.PlayOneShot(playerHitClip);
+        Assert.IsNotNull(groundCheck);
     }
 
     private void Update()
@@ -89,24 +82,26 @@ public class PlayerController : MonoBehaviour
 
             // Player movement
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-            if(isGrounded && velocity.y <0)
+            if (isGrounded && velocity.y < 0f)
             {
                 velocity.y = 0f;
             }
-
             Vector3 movementVector = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
-            if (Input.GetButtonDown("Dash"))
+            if (Input.GetButtonDown("Dash") && Time.time > nextDash)
             {
+                nextDash = Time.time + dashCooldown;
                 StartCoroutine(Dash(movementVector));
             }
-            controller.Move(movementVector * speed * Time.deltaTime);
 
-            if(Input.GetButtonDown("Jump") &&isGrounded)
+            controller.Move(movementVector * speed * Time.deltaTime);
+            if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
-
-            velocity.y += gravity * Time.deltaTime;
+            if (!isGrounded)
+            {
+                velocity.y += gravity * Time.deltaTime;
+            }
             controller.Move(velocity * Time.deltaTime);
 
             // Sound of movement
@@ -125,13 +120,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     System.Collections.IEnumerator Dash(Vector3 movementVector)
     {
         float startTime = Time.time;
-        while(Time.time < startTime + dashTime)
+        while (Time.time < startTime + dashTime)
         {
             controller.Move(movementVector * dashSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    private void PlayAudioHit()
+    {
+        audioSource.PlayOneShot(playerHitClip);
     }
 }
