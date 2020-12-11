@@ -1109,9 +1109,9 @@ MonoBehaviour:
   - prefab: {fileID: 7585868742244107830, guid: 439abdf19e7805c4dbd7d17f71d81da0, type: 3}
     numberToSpawn: 1
   - prefab: {fileID: 4717209344457500148, guid: 6caebff0520479a48b9b3e55d5641269, type: 3}
-    numberToSpawn: 1
+    numberToSpawn: 0
   - prefab: {fileID: 1777768213959945489, guid: be9273539da8e894a84afc0c55168d9d, type: 3}
-    numberToSpawn: 1
+    numberToSpawn: 0
   spawnAreas:
   - {fileID: 353766865}
   - {fileID: 2072201442}

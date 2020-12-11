@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab302a8bc2de4a42a01cc8ccccf3f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 100
 --- !u!114 &714819741741092165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58d87f9ead00334c85241025177d9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 6775043610821983624, guid: 5d1b822027490964e90a97f6a814a437, type: 3}
+  explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   radius: 7
   power: 5
 --- !u!82 &-1176973637920404664
