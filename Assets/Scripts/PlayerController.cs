@@ -8,10 +8,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0.0f, 1000.0f)] private float sensitivity = 90.0f;
     [SerializeField] private AudioClip footstepClip;
     [SerializeField] private AudioClip playerHitClip;
+    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float groundDistance = 0.2f;
+    [SerializeField] private float jumpHeight = 3f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float dashSpeed = 20f;
+    [SerializeField] private float dashTime = 0.25f;
+    private bool isGrounded;
+    private Vector3 velocity;
     private Camera camera = null;
     private float yRotation = 0.0f;
     private CharacterController controller;
-    private Rigidbody body;
+    //private Rigidbody body; 
     private HealthComponent health;
     private Weapon weapon;
     private AudioSource audioSource;
@@ -22,8 +31,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody>();
-        Assert.IsNotNull(body);
+        //body = GetComponent<Rigidbody>();
+        //Assert.IsNotNull(body);
 
         camera = GetComponentInChildren<Camera>();
         Assert.IsNotNull(camera);
@@ -44,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
         Assert.IsNotNull(footstepClip);
         Assert.IsNotNull(playerHitClip);
+
+        velocity = new Vector3();
     }
 
     private void PlayAudioHit()
@@ -76,17 +87,30 @@ public class PlayerController : MonoBehaviour
                 weapon.transform.localRotation = Quaternion.identity;
             }
 
-            if (controller.isGrounded)
+            // Player movement
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            if(isGrounded && velocity.y <0)
             {
-                body.velocity = Vector3.zero;
+                velocity.y = -2f;
             }
 
-            // Player movement
-            Vector3 movementVector = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical") + transform.up * body.velocity.y;
+            Vector3 movementVector = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
+            if (Input.GetButtonDown("Dash"))
+            {
+                StartCoroutine(Dash(movementVector));
+            }
             controller.Move(movementVector * speed * Time.deltaTime);
 
+            if(Input.GetButtonDown("Jump") &&isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+
             // Sound of movement
-            if (controller.isGrounded && controller.velocity.magnitude > 2.0f && !audioSource.isPlaying)
+            if (isGrounded && movementVector.magnitude > 1.0f && !audioSource.isPlaying)
             {
                 audioSource.volume = Random.Range(0.7f, 1.0f);
                 audioSource.pitch = Random.Range(0.7f, 1.0f);
@@ -98,6 +122,16 @@ public class PlayerController : MonoBehaviour
             {
                 weapon.Shoot();
             }
+        }
+    }
+
+    System.Collections.IEnumerator Dash(Vector3 movementVector)
+    {
+        float startTime = Time.time;
+        while(Time.time < startTime + dashTime)
+        {
+            controller.Move(movementVector * dashSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 }
