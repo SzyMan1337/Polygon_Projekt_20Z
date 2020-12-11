@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0.0f, 1000.0f)] private float sensitivity = 90.0f;
     [SerializeField] private AudioClip footstepClip;
     [SerializeField] private AudioClip playerHitClip;
-    [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private float groundDistance = 0.2f;
+    [SerializeField] private float gravity = -19.62f;
+    [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private float jumpHeight = 3f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
             if(isGrounded && velocity.y <0)
             {
-                velocity.y = -2f;
+                velocity.y = 0f;
             }
 
             Vector3 movementVector = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");

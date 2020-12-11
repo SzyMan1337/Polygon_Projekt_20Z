@@ -404,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b1aa2b583b4696140a8b0041e4aef2be, type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1aa2b583b4696140a8b0041e4aef2be, type: 3}
@@ -2456,11 +2456,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1040166918184403656, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
       propertyPath: groundDistance
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1040166918184403656, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
       propertyPath: groundMask.m_Bits
-      value: 32
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040166918184403656, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
+      propertyPath: gravity
+      value: -19.62
       objectReference: {fileID: 0}
     - target: {fileID: 1040166918184403657, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
       propertyPath: m_Name
