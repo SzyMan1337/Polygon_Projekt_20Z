@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public class BossDeath : MonoBehaviour
 { 
@@ -6,8 +7,17 @@ public class BossDeath : MonoBehaviour
     public GameObject effectHandler;
     [SerializeField] private float radius = 7.0f;
     [SerializeField] private float power = 500.0f;
+    private HealthComponent health;
 
-    private void OnDestroy()
+
+    private void Awake()
+    {
+        health = GetComponent<HealthComponent>();
+        Assert.IsNotNull(health);
+        health.OnDeath += Explode;
+    }
+
+    private void Explode()
     {
         // Efekt wybuchu
         effectHandler = Instantiate(explosionEffect, transform.position, transform.rotation);

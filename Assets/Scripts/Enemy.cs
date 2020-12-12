@@ -7,11 +7,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Weapon weapon = null;
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 2.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float aimRange = 50.0f;
-    [SerializeField, Range(0.0f, 10.0f)] private float aimSpeed = 0.1f;
+    [SerializeField] private float MOVEMENT_THRESHOLD = 20.0f;
     [SerializeField] private AudioClip enemyHitClip;
     [SerializeField] private GameObject enemyDeathPrefab;
     private Rigidbody rigidbody = null;
-    private const float MOVEMENT_THRESHOLD = 20.0f;
     private HealthComponent health;
     private AudioSource audioSource;
 

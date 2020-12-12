@@ -224,8 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 3672737652858875740, guid: 94da27e8c53b9b84cadfb3f1a746a54a, type: 3}
   speed: 9
-  aimRange: 2
-  aimSpeed: 0.1
+  aimRange: 3
+  MOVEMENT_THRESHOLD: 2
   enemyHitClip: {fileID: 8300000, guid: 7d64965d9d021b944a3cda632f742cb8, type: 3}
   enemyDeathPrefab: {fileID: 6775043610821983624, guid: 5d1b822027490964e90a97f6a814a437, type: 3}
 --- !u!114 &7912484441934504910
