@@ -287,13 +287,13 @@ MonoBehaviour:
   sensitivity: 400
   footstepClip: {fileID: 8300000, guid: e3a8b8ec90cb5834cab7ec25378168a6, type: 3}
   playerHitClip: {fileID: 8300000, guid: 1f2060630c9de1a4a8c1443a22802008, type: 3}
-  gravity: -19.62
-  groundDistance: 0.1
-  jumpHeight: 2
   groundCheck: {fileID: 5685663979201070516}
   groundMask:
     serializedVersion: 2
     m_Bits: 1
+  gravity: -19.62
+  groundDistance: 0.1
+  jumpHeight: 2
   dashSpeed: 20
   dashTime: 0.25
   dashCooldown: 1
@@ -966,9 +966,9 @@ MonoBehaviour:
   m_fontSize: 260
   m_fontSizeBase: 260
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 200
+  m_fontSizeMax: 260
   m_fontStyle: 35
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

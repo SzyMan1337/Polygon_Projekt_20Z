@@ -6,8 +6,8 @@ using System.Collections.Generic;
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField, Range(0.0f, 60.0f)] private float timeBeforeFirstWave;
-    [SerializeField, Range(0.0f, 60.0f)] private float timeBetweenWaves;
+    [SerializeField, Range(0.0f, 60.0f)] private float timeBeforeFirstWave = 2.0f;
+    [SerializeField, Range(0.0f, 60.0f)] private float timeBetweenWaves = 5.0f;
     [SerializeField] private Wave[] waves;
     [SerializeField] private BoxCollider[] spawnAreas;
 

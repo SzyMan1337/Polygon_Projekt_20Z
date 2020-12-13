@@ -27,7 +27,7 @@ public class Wave : MonoBehaviour
     }
 
 
-    [SerializeField, Range(0.0f, 10.0f)] private float timeBetweenSpawns;
+    [SerializeField, Range(0.0f, 10.0f)] private float timeBetweenSpawns = 0.5f;
     [SerializeField] private List<EnemyTypeAndAmount> enemies;
 
     public float TimeBetweenSpawns => timeBetweenSpawns;
