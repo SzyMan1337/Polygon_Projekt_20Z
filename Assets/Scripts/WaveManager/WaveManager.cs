@@ -11,9 +11,12 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Wave[] waves;
     [SerializeField] private BoxCollider[] spawnAreas;
 
+    private AudioSource audioSource;
     private const float SPAWN_HEIGHT = 1.0f;
     private int enemiesRemaining = 0;
     private int actualWaveIndex = 0;
+
+    public static event System.Action OnNewWave;
 
 
     private void Awake()
@@ -31,6 +34,9 @@ public class WaveManager : MonoBehaviour
         foreach (var wave in waves)
             Assert.IsNotNull(wave);
 
+        audioSource = GetComponent<AudioSource>();
+        Assert.IsNotNull(audioSource);
+
         Enemy.OnAnyEnemyDeath += ReduceRemainingEnemies;
         Enemy.OnAnyEnemyDeath += CheckIfShouldSpawnNewWave;
     }
@@ -43,7 +49,11 @@ public class WaveManager : MonoBehaviour
     private void CheckIfShouldSpawnNewWave()
     {
         if (enemiesRemaining <= 0 && waves.Length > actualWaveIndex)
+        {
+            OnNewWave?.Invoke();
+            audioSource.Play();
             StartCoroutine(SpawnWave());
+        }
         else if (enemiesRemaining <= 0 && waves.Length == actualWaveIndex)
         {
             Debug.Log("WYGRALES!!!");
