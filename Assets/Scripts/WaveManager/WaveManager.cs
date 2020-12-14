@@ -12,12 +12,13 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private BoxCollider[] spawnAreas = null;
 
     private AudioSource audioSource;
-    private const float SPAWN_HEIGHT = 1.0f;
     private int enemiesRemaining = 0;
     private int actualWaveIndex = 0;
 
+
     public static event System.Action OnNewWave;
-    public static event System.Action OnWinningGame;
+    public static event System.Action OnGameWon;
+
 
     private void Awake()
     {
@@ -56,7 +57,7 @@ public class WaveManager : MonoBehaviour
         }
         else if (enemiesRemaining <= 0 && waves.Length == actualWaveIndex)
         {
-            OnWinningGame?.Invoke();
+            OnGameWon?.Invoke();
         }
     }
 
@@ -83,7 +84,7 @@ public class WaveManager : MonoBehaviour
     {
         if(enemyType != null)
         {
-            var spawnPosition = new Vector3(0.0f, SPAWN_HEIGHT, 0.0f);
+            var spawnPosition = Vector3.zero;
             var spawningArea = spawnAreas[Random.Range(0, spawnAreas.Length)];
             spawnPosition.x = spawningArea.bounds.extents.x * Random.Range(-1.0f, 1.0f) + spawningArea.transform.position.x;
             spawnPosition.z = spawningArea.bounds.extents.z * Random.Range(-1.0f, 1.0f) + spawningArea.transform.position.z;

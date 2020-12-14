@@ -2,31 +2,34 @@
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 using TMPro;
+using System.Collections;
 
 
 public class EndScreen : MonoBehaviour
 {
+    [SerializeField, Range(0.0f, 5.0f)] private float timeBeforeWinScreen = 1.0f;
     [SerializeField] private GameObject mainElements = null;
-    
-    private TextMeshProUGUI text;
-    private new Camera camera;
-    private Button button;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button returnToMainMenuButton;
+    [SerializeField] private Image cardImage;
+    [SerializeField] private Sprite vicotryCard;
+    [SerializeField] private Sprite deathCard;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
 
     private void Awake()
     {
         Assert.IsNotNull(mainElements);
         mainElements.gameObject.SetActive(false);
-
-        camera = GetComponentInChildren<Camera>(true);
-        Assert.IsNotNull(camera);
-
-        button = GetComponentInChildren<Button>(true);
-        Assert.IsNotNull(button);
-        button.onClick.AddListener(Restart);
-
-        text = GetComponentInChildren<TextMeshProUGUI>(true);
-        Assert.IsNotNull(text);
+        Assert.IsNotNull(restartButton);
+        restartButton.onClick.AddListener(Restart);
+        Assert.IsNotNull(returnToMainMenuButton);
+        returnToMainMenuButton.onClick.AddListener(ReturnToMainMenu);
+        Assert.IsNotNull(cardImage);
+        Assert.IsNotNull(vicotryCard);
+        Assert.IsNotNull(deathCard);
+        Assert.IsNotNull(scoreText);
+        WaveManager.OnGameWon += OnVictory;
     }
 
     private void Start()
@@ -35,10 +38,34 @@ public class EndScreen : MonoBehaviour
         player.Health.OnDeath += OnPlayerDeath;
     }
 
+    private void OnDestroy()
+    {
+        WaveManager.OnGameWon -= OnVictory;
+    }
+
     private void OnPlayerDeath()
     {
-        int points = SceneManager.Instance.Points;
-        text.text = "Score: " + points;
+        cardImage.sprite = deathCard;
+        Show();
+    }
+
+    private void OnVictory()
+    {
+        cardImage.sprite = vicotryCard;
+        StartCoroutine(DelayedWin());
+        Show();
+    }
+
+    private IEnumerator DelayedWin()
+    {
+        yield return new WaitForSeconds(timeBeforeWinScreen);
+        Show();
+    }
+
+    private void Show()
+    {
+        SceneManager.Instance?.Player?.SwitchCameraOff();
+        scoreText.text = SceneManager.Instance?.Points.ToString();
         Cursor.lockState = CursorLockMode.None;
         mainElements.SetActive(true);
     }
@@ -46,5 +73,10 @@ public class EndScreen : MonoBehaviour
     private void Restart()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    private void ReturnToMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }

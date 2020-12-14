@@ -9,6 +9,7 @@ public class NewWaveNotification : MonoBehaviour
     private TextMeshProUGUI text;
     private const float TIME = 2.0f;
 
+
     private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();

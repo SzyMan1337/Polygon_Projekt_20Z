@@ -2151,7 +2151,8 @@ MonoBehaviour:
 
     jump: SPACE
 
-    dash: F'
+    dash: Left
+    Alt'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
