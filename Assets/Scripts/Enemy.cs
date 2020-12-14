@@ -17,11 +17,9 @@ public class Enemy : MonoBehaviour
 
 
     public static event System.Action OnAnyEnemyDeath;
-    public static event System.Action OnPointsGain;
 
 
     public HealthComponent Health => health;
-    public float PointsForPlayerOnDeath => pointsForPlayerOnDeath;
 
 
     private void Awake()
@@ -36,7 +34,6 @@ public class Enemy : MonoBehaviour
         Assert.IsNotNull(health);
         health.OnDeath += OnAnyEnemyDeath;
         health.OnDeath += PlayAudioOnDeath;
-        health.OnDeath += GivePointsOnDeath;
         health.OnHit += PlayAudioOnHit;
 
         audioSource = GetComponent<AudioSource>();
@@ -90,7 +87,8 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         health.OnDeath -= OnAnyEnemyDeath;
-        health.OnDeath -= GivePointsOnDeath;
+        health.OnDeath -= PlayAudioOnDeath;
+        health.OnHit -= PlayAudioOnHit;
     }
 
     private void PlayAudioOnHit()
@@ -102,10 +100,5 @@ public class Enemy : MonoBehaviour
     {
         var enemyDeath = Instantiate(enemyDeathPrefab, transform.position, transform.rotation);
         Destroy(enemyDeath, 0.8f);
-    }
-    private void GivePointsOnDeath()
-    {
-        SceneManager.pointsOfPlayer += pointsForPlayerOnDeath;
-        OnPointsGain?.Invoke();
     }
 }

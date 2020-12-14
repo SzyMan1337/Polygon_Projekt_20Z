@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
-using TMPro;
 using System.Collections;
 
 
@@ -14,7 +13,6 @@ public class EndScreen : MonoBehaviour
     [SerializeField] private Image cardImage;
     [SerializeField] private Sprite vicotryCard;
     [SerializeField] private Sprite deathCard;
-    [SerializeField] private TextMeshProUGUI scoreText;
 
 
     private void Awake()
@@ -28,7 +26,6 @@ public class EndScreen : MonoBehaviour
         Assert.IsNotNull(cardImage);
         Assert.IsNotNull(vicotryCard);
         Assert.IsNotNull(deathCard);
-        Assert.IsNotNull(scoreText);
         WaveManager.OnGameWon += OnVictory;
     }
 
@@ -65,7 +62,6 @@ public class EndScreen : MonoBehaviour
     private void Show()
     {
         SceneManager.Instance?.Player?.SwitchCameraOff();
-        scoreText.text = SceneManager.Instance?.Points.ToString();
         Cursor.lockState = CursorLockMode.None;
         mainElements.SetActive(true);
     }

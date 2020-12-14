@@ -6,11 +6,15 @@ public class SceneManager : MonoBehaviour
 {
     private static SceneManager instance;
     private PlayerController player;
-    public static int pointsOfPlayer = 0;
+    private int pointsCounter = 0;
+
+
+    public event System.Action OnPointsChanged;
+
 
     public static SceneManager Instance => instance;
     public PlayerController Player => player;
-    public int Points => pointsOfPlayer;
+    public int Points => pointsCounter;
 
 
     private void Awake()
@@ -24,6 +28,19 @@ public class SceneManager : MonoBehaviour
 
         player = FindObjectOfType<PlayerController>();
         Assert.IsNotNull(player);
+        player.Health.OnDeath += OnPlayerDeath;
+        Enemy.OnAnyEnemyDeath += IncreasePoints;
+    }
+
+    private void OnPlayerDeath()
+    {
+        Enemy.OnAnyEnemyDeath -= IncreasePoints;
+    }
+
+    private void IncreasePoints()
+    {
+        ++pointsCounter;
+        OnPointsChanged?.Invoke();
     }
 
     private void OnDestroy()
@@ -32,6 +49,6 @@ public class SceneManager : MonoBehaviour
         {
             instance = null;
         }
-        pointsOfPlayer = 0;
+        Enemy.OnAnyEnemyDeath -= IncreasePoints;
     }
 }

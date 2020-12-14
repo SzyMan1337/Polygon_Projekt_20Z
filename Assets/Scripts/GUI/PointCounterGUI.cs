@@ -12,17 +12,21 @@ public class PointCounterGUI : MonoBehaviour
     {
         text = GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(text);
-
-        Enemy.OnPointsGain += ChangePoints;
     }
 
-    private void ChangePoints()
+    private void Start()
+    {
+        SceneManager.Instance.OnPointsChanged += UpdatePoints;
+        UpdatePoints();
+    }
+
+    private void UpdatePoints()
     {
         text.text = SceneManager.Instance?.Points.ToString();
     }
 
     private void OnDestroy()
     {
-        Enemy.OnPointsGain -= ChangePoints;
+        SceneManager.Instance.OnPointsChanged -= UpdatePoints;
     }
 }

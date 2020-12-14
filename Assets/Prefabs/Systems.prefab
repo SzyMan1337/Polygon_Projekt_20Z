@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 5472927124617715041}
   - component: {fileID: 2947939976420793998}
   - component: {fileID: 4978483024927120464}
+  - component: {fileID: 5243908203695875667}
   m_Layer: 0
   m_Name: PointsCounter
   m_TagString: Untagged
@@ -260,6 +261,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5243908203695875667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108500264781682390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 040c8385c7ea88b4ca09ec54f435e5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2150624167221537981
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5176e3188d5a5c546a4c3c887f4a90f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBeforeWinScreen: 1
   mainElements: {fileID: 7877874786766478574}
   restartButton: {fileID: 638154957552493089}
   returnToMainMenuButton: {fileID: 5385068816329518085}
@@ -1291,8 +1305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faa7ee61d7b9e5459c5f5574ac5be6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeFirstWave: 2
-  timeBetweenWaves: 3
+  timeBeforeFirstWave: 3
+  timeBetweenWaves: 5
   waves:
   - {fileID: 2620466521787436005}
   - {fileID: 3675433285677293343}
@@ -1638,14 +1652,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 872c127bd02bd464894a3df3894578b4, type: 3}
---- !u!65 &6678430616789427597 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 2612012352431186438, guid: 872c127bd02bd464894a3df3894578b4, type: 3}
-  m_PrefabInstance: {fileID: 8687784693636286347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6678430616789427596 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2612012352431186439, guid: 872c127bd02bd464894a3df3894578b4, type: 3}
+  m_PrefabInstance: {fileID: 8687784693636286347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6678430616789427597 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2612012352431186438, guid: 872c127bd02bd464894a3df3894578b4, type: 3}
   m_PrefabInstance: {fileID: 8687784693636286347}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8687784693902141182
