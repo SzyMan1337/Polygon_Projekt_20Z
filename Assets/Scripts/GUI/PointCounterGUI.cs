@@ -13,8 +13,7 @@ public class PointCounterGUI : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(text);
 
-        SceneManager.OnPointsGain += ChangePoints;
-        ChangePoints();
+        Enemy.OnPointsGain += ChangePoints;
     }
 
     private void ChangePoints()
@@ -24,6 +23,6 @@ public class PointCounterGUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        SceneManager.OnPointsGain -= ChangePoints;
+        Enemy.OnPointsGain -= ChangePoints;
     }
 }

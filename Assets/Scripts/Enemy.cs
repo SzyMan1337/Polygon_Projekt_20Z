@@ -5,6 +5,7 @@ using UnityEngine.Assertions;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Weapon weapon = null;
+    [SerializeField, Range(0, 100)] private int pointsForPlayerOnDeath = 1;
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 2.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float shootingRange = 50.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float distanceToTarget = 20.0f;
@@ -16,10 +17,12 @@ public class Enemy : MonoBehaviour
 
 
     public static event System.Action OnAnyEnemyDeath;
+    public static event System.Action OnPointsGain;
 
 
     public HealthComponent Health => health;
-    
+    public float PointsForPlayerOnDeath => pointsForPlayerOnDeath;
+
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class Enemy : MonoBehaviour
         Assert.IsNotNull(health);
         health.OnDeath += OnAnyEnemyDeath;
         health.OnDeath += PlayAudioOnDeath;
+        health.OnDeath += GivePointsOnDeath;
         health.OnHit += PlayAudioOnHit;
 
         audioSource = GetComponent<AudioSource>();
@@ -86,6 +90,7 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         health.OnDeath -= OnAnyEnemyDeath;
+        health.OnDeath -= GivePointsOnDeath;
     }
 
     private void PlayAudioOnHit()
@@ -97,5 +102,10 @@ public class Enemy : MonoBehaviour
     {
         var enemyDeath = Instantiate(enemyDeathPrefab, transform.position, transform.rotation);
         Destroy(enemyDeath, 0.8f);
+    }
+    private void GivePointsOnDeath()
+    {
+        SceneManager.pointsOfPlayer += pointsForPlayerOnDeath;
+        OnPointsGain?.Invoke();
     }
 }
