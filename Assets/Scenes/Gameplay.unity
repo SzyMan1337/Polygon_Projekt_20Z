@@ -406,7 +406,7 @@ Transform:
   - {fileID: 1868058322}
   - {fileID: 1325969351}
   m_Father: {fileID: 1297218829}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &347193923
 PrefabInstance:
@@ -1072,7 +1072,7 @@ Transform:
   - {fileID: 1360179831}
   - {fileID: 1665156998}
   m_Father: {fileID: 1297218829}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1001 &850509059
 PrefabInstance:
@@ -1836,10 +1836,10 @@ Transform:
   - {fileID: 1061375129}
   - {fileID: 523445277}
   - {fileID: 651529805}
-  - {fileID: 424835530}
   - {fileID: 833463118}
-  - {fileID: 514068554}
+  - {fileID: 424835530}
   - {fileID: 283815727}
+  - {fileID: 514068554}
   - {fileID: 1823094893}
   m_Father: {fileID: 1220315500}
   m_RootOrder: 3
@@ -3032,6 +3032,10 @@ PrefabInstance:
     - target: {fileID: 8687784693013692149, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687784694755385362, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
+      propertyPath: spawnAreas.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}

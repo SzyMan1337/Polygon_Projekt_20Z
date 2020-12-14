@@ -653,7 +653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2150624168728545243
 Transform:
   m_ObjectHideFlags: 0
@@ -934,13 +934,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faa7ee61d7b9e5459c5f5574ac5be6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4055259757369897726, guid: 16c44bce424e59048beec47da264bd96, type: 3}
+  enemiesToSpawn:
+  - prefab: {fileID: 3747340110179563787, guid: 3f3072ae012fc2649aab39ec0de8c8ef, type: 3}
+    numberToSpawn: 1
   spawnAreas:
   - {fileID: 6678430618019054039}
   - {fileID: 6678430616516232440}
   - {fileID: 6678430617901071082}
   - {fileID: 6678430616789427597}
-  numberOfEnemiesToSpawn: 5
 --- !u!1001 &8687784693636286347
 PrefabInstance:
   m_ObjectHideFlags: 0

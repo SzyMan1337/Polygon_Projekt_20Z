@@ -9,7 +9,6 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] enemyType[] enemiesToSpawn = new enemyType[3];
     [SerializeField] private BoxCollider[] spawnAreas;
-    private const float SPAWN_HEIGHT = 1.0f;
 
     [System.Serializable]
     public class enemyType
@@ -42,7 +41,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
-        var spawnPosition = new Vector3(0.0f, SPAWN_HEIGHT, 0.0f);
+        var spawnPosition = Vector3.zero;
 
         foreach (var type in enemiesToSpawn)
         {

@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Weapon weapon = null;
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 2.0f;
-    [SerializeField, Range(0.0f, 1000.0f)] private float aimRange = 50.0f;
-    [SerializeField] private float MOVEMENT_THRESHOLD = 20.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float shootingRange = 50.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float distanceToTarget = 20.0f;
     [SerializeField] private AudioClip enemyHitClip;
     [SerializeField] private GameObject enemyDeathPrefab;
     private Rigidbody rigidbody = null;
@@ -48,9 +48,11 @@ public class Enemy : MonoBehaviour
         if (player != null && player.Health.IsAlive)
         {
             // Movement towards player
-            if (Vector3.Distance(transform.position, player.transform.position) > MOVEMENT_THRESHOLD)
+            if (Vector3.Distance(transform.position, player.transform.position) > distanceToTarget)
             {
-                rigidbody.velocity = (player.transform.position - transform.position).normalized * speed;
+                var velocityVector = (player.transform.position - transform.position).normalized * speed;
+                velocityVector.y = 0.0f;
+                rigidbody.velocity = velocityVector;
             }
             else
             {
@@ -62,7 +64,7 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(rotationVector);
 
             //Shooting at player
-            if (Physics.Raycast(transform.position, transform.forward, out var hit, aimRange))
+            if (Physics.Raycast(transform.position, transform.forward, out var hit, shootingRange))
             {
                 if (hit.collider.gameObject == player.gameObject)
                 {
