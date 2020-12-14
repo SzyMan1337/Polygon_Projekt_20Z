@@ -6,7 +6,6 @@ using System.Collections;
 
 public class EndScreen : MonoBehaviour
 {
-    [SerializeField, Range(0.0f, 5.0f)] private float timeBeforeWinScreen = 1.0f;
     [SerializeField] private GameObject mainElements = null;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button returnToMainMenuButton;
@@ -26,13 +25,12 @@ public class EndScreen : MonoBehaviour
         Assert.IsNotNull(cardImage);
         Assert.IsNotNull(vicotryCard);
         Assert.IsNotNull(deathCard);
-        WaveManager.OnGameWon += OnVictory;
     }
 
     private void Start()
-    {        
-        PlayerController player = SceneManager.Instance?.Player; 
-        player.Health.OnDeath += OnPlayerDeath;
+    {
+        WaveManager.OnGameWon += OnVictory;
+        SceneManager.Instance.Player.Health.OnDeath += OnPlayerDeath;
     }
 
     private void OnDestroy()
@@ -49,18 +47,13 @@ public class EndScreen : MonoBehaviour
     private void OnVictory()
     {
         cardImage.sprite = vicotryCard;
-        StartCoroutine(DelayedWin());
-        Show();
-    }
-
-    private IEnumerator DelayedWin()
-    {
-        yield return new WaitForSeconds(timeBeforeWinScreen);
         Show();
     }
 
     private void Show()
     {
+        WaveManager.OnGameWon -= OnVictory;
+        SceneManager.Instance.Player.Health.OnDeath -= OnPlayerDeath;
         SceneManager.Instance?.Player?.SwitchCameraOff();
         Cursor.lockState = CursorLockMode.None;
         mainElements.SetActive(true);

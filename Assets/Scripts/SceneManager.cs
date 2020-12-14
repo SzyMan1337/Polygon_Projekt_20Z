@@ -28,6 +28,10 @@ public class SceneManager : MonoBehaviour
 
         player = FindObjectOfType<PlayerController>();
         Assert.IsNotNull(player);
+    }
+
+    private void Start()
+    {
         player.Health.OnDeath += OnPlayerDeath;
         Enemy.OnAnyEnemyDeath += IncreasePoints;
     }

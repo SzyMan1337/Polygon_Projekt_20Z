@@ -24,9 +24,4 @@ public class PointCounterGUI : MonoBehaviour
     {
         text.text = SceneManager.Instance?.Points.ToString();
     }
-
-    private void OnDestroy()
-    {
-        SceneManager.Instance.OnPointsChanged -= UpdatePoints;
-    }
 }

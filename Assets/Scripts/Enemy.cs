@@ -84,13 +84,6 @@ public class Enemy : MonoBehaviour
         }   
     }
 
-    private void OnDestroy()
-    {
-        health.OnDeath -= OnAnyEnemyDeath;
-        health.OnDeath -= PlayAudioOnDeath;
-        health.OnHit -= PlayAudioOnHit;
-    }
-
     private void PlayAudioOnHit()
     {
         audioSource.PlayOneShot(enemyHitClip);

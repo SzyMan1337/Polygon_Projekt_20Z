@@ -137,6 +137,6 @@ public class PlayerController : MonoBehaviour
 
     public void SwitchCameraOff()
     {
-        camera.gameObject.SetActive(false);
+        camera?.gameObject.SetActive(false);
     }
 }

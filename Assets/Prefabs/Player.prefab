@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 6458691640674864864}
   - component: {fileID: 1916372705554789236}
   m_Layer: 0
-  m_Name: NewWaveTextBox
+  m_Name: NewWaveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'New Wave
+  m_text: 'Next Wave
 
     Approaching'
   m_isRightToLeft: 0
@@ -963,10 +963,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 260
-  m_fontSizeBase: 260
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 200
   m_fontSizeMax: 260
   m_fontStyle: 35

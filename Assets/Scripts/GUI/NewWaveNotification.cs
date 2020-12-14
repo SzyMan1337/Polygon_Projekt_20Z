@@ -7,7 +7,7 @@ using System.Collections;
 public class NewWaveNotification : MonoBehaviour
 {
     private TextMeshProUGUI text;
-    private const float TIME = 2.0f;
+    private const float SHOW_TIME = 2.0f;
 
 
     private void Awake()
@@ -24,10 +24,11 @@ public class NewWaveNotification : MonoBehaviour
     {
         StartCoroutine(DisplayAndWait());
     }
+
     private IEnumerator DisplayAndWait()
     {
         text.enabled = true;
-        yield return new WaitForSeconds(TIME);
+        yield return new WaitForSeconds(SHOW_TIME);
         text.enabled = false;
     }
 

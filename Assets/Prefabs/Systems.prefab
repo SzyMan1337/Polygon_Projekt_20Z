@@ -466,14 +466,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5176e3188d5a5c546a4c3c887f4a90f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeWinScreen: 1
   mainElements: {fileID: 7877874786766478574}
   restartButton: {fileID: 638154957552493089}
   returnToMainMenuButton: {fileID: 5385068816329518085}
   cardImage: {fileID: 8156377111702010424}
   vicotryCard: {fileID: 21300000, guid: 902665978d43a044db43e2e877d5b69a, type: 3}
   deathCard: {fileID: 21300000, guid: 59acc0c816cd4524f82e2f0b981d1da8, type: 3}
-  scoreText: {fileID: 4978483024927120464}
 --- !u!1 &2543170965145186562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,8 +1303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faa7ee61d7b9e5459c5f5574ac5be6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeFirstWave: 3
-  timeBetweenWaves: 5
+  timeBeforeFirstWave: 2
+  timeBetweenWaves: 3
   waves:
   - {fileID: 2620466521787436005}
   - {fileID: 3675433285677293343}
