@@ -6,7 +6,8 @@ using TMPro;
 
 public class EndScreen : MonoBehaviour
 {
-    private Canvas canvas;
+    [SerializeField] private GameObject mainElements = null;
+    
     private TextMeshProUGUI text;
     private new Camera camera;
     private Button button;
@@ -14,37 +15,32 @@ public class EndScreen : MonoBehaviour
 
     private void Awake()
     {
-        camera = GetComponentInChildren<Camera>();
+        Assert.IsNotNull(mainElements);
+        mainElements.gameObject.SetActive(false);
 
-        canvas = GetComponentInChildren<Canvas>();
-        Assert.IsNotNull(canvas);
+        camera = GetComponentInChildren<Camera>(true);
+        Assert.IsNotNull(camera);
 
-        button = canvas.GetComponentInChildren<Button>();
+        button = GetComponentInChildren<Button>(true);
         Assert.IsNotNull(button);
+        button.onClick.AddListener(Restart);
 
-        text = canvas.GetComponentInChildren<TextMeshProUGUI>();
+        text = GetComponentInChildren<TextMeshProUGUI>(true);
         Assert.IsNotNull(text);
-
-        camera.gameObject.SetActive(false);
-        canvas.gameObject.SetActive(false);
     }
 
     private void Start()
-    {
-        button.onClick.RemoveAllListeners();
-
-        button.onClick.AddListener(Restart);
+    {        
         PlayerController player = SceneManager.Instance?.Player; 
         player.Health.OnDeath += OnPlayerDeath;
     }
 
-    public void OnPlayerDeath()
+    private void OnPlayerDeath()
     {
         int points = SceneManager.Instance.Points;
         text.text = "Score: " + points;
-        camera.gameObject.SetActive(true);
-        canvas.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        mainElements.SetActive(true);
     }
 
     private void Restart()

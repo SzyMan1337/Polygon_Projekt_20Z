@@ -2,10 +2,10 @@
 using UnityEngine.Assertions;
 
 
-public class BossDeath : MonoBehaviour
+public class BossDeathExplosion : MonoBehaviour
 {
-    [SerializeField, Range(0.0f, 1000.0f)] private float radius = 7.0f;
-    [SerializeField, Range(0.0f, 1000.0f)] private float power = 500.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float range = 7.0f;
+    [SerializeField, Range(0.0f, 1000.0f)] private float damage = 5.0f;
     [SerializeField] private GameObject explosionEffectPrefab;
     private HealthComponent health;
 
@@ -22,14 +22,14 @@ public class BossDeath : MonoBehaviour
     {
         var effectHandler = Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, range);
 
         foreach(var collider in colliders)
         {
             HealthComponent health = collider.GetComponent<HealthComponent>();
             if(health != null)
             {
-                health.ApplyDamage((radius - Vector3.Distance(collider.transform.position, transform.position)) * power);
+                health.ApplyDamage(damage);
             }
         }
         Destroy(effectHandler, 2.0f);
