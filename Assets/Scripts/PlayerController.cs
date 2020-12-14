@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (health.IsAlive)
+        if (health.IsAlive && camera.gameObject.activeSelf)
         {
             float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
@@ -134,5 +134,10 @@ public class PlayerController : MonoBehaviour
     private void PlayAudioHit()
     {
         audioSource.PlayOneShot(playerHitClip);
+    }
+
+    public void SwitchCameraOff()
+    {
+        camera.gameObject.SetActive(false);
     }
 }

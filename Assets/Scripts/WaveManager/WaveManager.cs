@@ -8,8 +8,8 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField, Range(0.0f, 60.0f)] private float timeBeforeFirstWave = 2.0f;
     [SerializeField, Range(0.0f, 60.0f)] private float timeBetweenWaves = 5.0f;
-    [SerializeField] private Wave[] waves;
-    [SerializeField] private BoxCollider[] spawnAreas;
+    [SerializeField] private Wave[] waves = null;
+    [SerializeField] private BoxCollider[] spawnAreas = null;
 
     private AudioSource audioSource;
     private const float SPAWN_HEIGHT = 1.0f;
@@ -17,7 +17,7 @@ public class WaveManager : MonoBehaviour
     private int actualWaveIndex = 0;
 
     public static event System.Action OnNewWave;
-
+    public static event System.Action OnWinningGame;
 
     private void Awake()
     {
@@ -56,8 +56,7 @@ public class WaveManager : MonoBehaviour
         }
         else if (enemiesRemaining <= 0 && waves.Length == actualWaveIndex)
         {
-            Debug.Log("WYGRALES!!!");
-            // TO DO: WINNING SCREEN
+            OnWinningGame?.Invoke();
         }
     }
 
