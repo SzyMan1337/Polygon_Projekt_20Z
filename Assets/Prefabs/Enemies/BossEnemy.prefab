@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58d87f9ead00334c85241025177d9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 0}
-  effectHandler: {fileID: 0}
   radius: 7
   power: 500
+  explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  effectHandler: {fileID: 0}
 --- !u!1 &5682651530663518504
 GameObject:
   m_ObjectHideFlags: 0

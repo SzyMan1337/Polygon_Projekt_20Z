@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(rotationVector);
 
             //Shooting at player
-            if (Physics.Raycast(transform.position, transform.forward, out var hit, shootingRange))
+            if (Physics.Raycast(weapon.transform.position, player.transform.position - weapon.transform.position, out var hit, shootingRange))
             {
                 if (hit.collider.gameObject == player.gameObject)
                 {

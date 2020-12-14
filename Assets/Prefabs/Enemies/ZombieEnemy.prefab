@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: distanceToTarget
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: shootingRange
@@ -292,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1184368749549381585, guid: 94da27e8c53b9b84cadfb3f1a746a54a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.25
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1184368749549381585, guid: 94da27e8c53b9b84cadfb3f1a746a54a, type: 3}
       propertyPath: m_LocalRotation.x

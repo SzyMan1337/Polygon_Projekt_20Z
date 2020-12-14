@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7711896131199549748
+--- !u!1 &3614864990064661925
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5967088434005480781}
-  - component: {fileID: 1018944012719793855}
+  - component: {fileID: 3128203715177518417}
+  - component: {fileID: 8522911041055270261}
   m_Layer: 2
   m_Name: Body
   m_TagString: Untagged
@@ -17,32 +17,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5967088434005480781
+--- !u!4 &3128203715177518417
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7711896131199549748}
+  m_GameObject: {fileID: 3614864990064661925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1223412339431370963}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1018944012719793855
-BoxCollider:
+--- !u!135 &8522911041055270261
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7711896131199549748}
+  m_GameObject: {fileID: 3614864990064661925}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 0.5}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3180570620112858716
 PrefabInstance:
@@ -97,11 +97,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8129481501962542148, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
       propertyPath: speed
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8129481501962542148, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
       propertyPath: lifetime
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129481501962542148, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8798401455063468453, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
       propertyPath: m_Name

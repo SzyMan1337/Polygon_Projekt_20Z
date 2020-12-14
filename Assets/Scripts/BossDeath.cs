@@ -6,15 +6,13 @@ public class BossDeath : MonoBehaviour
 {
     [SerializeField, Range(0.0f, 1000.0f)] private float radius = 7.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float power = 500.0f;
-    [SerializeField] private GameObject explosionEffect;
-    [SerializeField] private GameObject effectHandler;
+    [SerializeField] private GameObject explosionEffectPrefab;
     private HealthComponent health;
 
 
     private void Awake()
     {
-        Assert.IsNotNull(explosionEffect);
-        Assert.IsNotNull(effectHandler);
+        Assert.IsNotNull(explosionEffectPrefab);
         health = GetComponent<HealthComponent>();
         Assert.IsNotNull(health);
         health.OnDeath += Explode;
@@ -22,7 +20,7 @@ public class BossDeath : MonoBehaviour
 
     private void Explode()
     {
-        effectHandler = Instantiate(explosionEffect, transform.position, transform.rotation);
+        var effectHandler = Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 

@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
         Assert.IsNotNull(projectileHitWallPrefab);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if(lifetime > 0.0f)
         {

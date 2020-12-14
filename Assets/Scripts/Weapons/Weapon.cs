@@ -8,7 +8,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform barrelEnd = null;
     [SerializeField, Range(0.0f, 10.0f)] private float timeBetweenShots = 0.2f;
     private float shotCooldown = 0.0f;
-    private float damage = 5.0f;
     private AudioSource audioSource;
 
 
@@ -33,7 +32,6 @@ public class Weapon : MonoBehaviour
         {
             shotCooldown = timeBetweenShots;
             var projectile = Instantiate(projectilePrefab, barrelEnd.position, barrelEnd.rotation);
-            projectile.Damage = damage;
             audioSource.Play();
         }
     }

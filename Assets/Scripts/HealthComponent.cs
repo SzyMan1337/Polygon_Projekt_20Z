@@ -45,7 +45,7 @@ public class HealthComponent : MonoBehaviour
         Assert.IsTrue(amount > 0.0f);
         if (IsAlive)
         {
-            CurrentHealth = Mathf.Max(currentHealth - amount, 0.0f);
+            CurrentHealth -= amount;
             if (IsAlive)
             {
                 OnHit?.Invoke();
@@ -63,7 +63,7 @@ public class HealthComponent : MonoBehaviour
         Assert.IsTrue(amount > 0.0f);
         if (IsAlive)
         {
-            CurrentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+            CurrentHealth += amount;
         }
     }
 }
