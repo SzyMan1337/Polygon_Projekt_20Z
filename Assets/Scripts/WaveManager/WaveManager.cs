@@ -38,8 +38,7 @@ public class WaveManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         Assert.IsNotNull(audioSource);
 
-        Enemy.OnAnyEnemyDeath += ReduceRemainingEnemies;
-        Enemy.OnAnyEnemyDeath += CheckIfShouldSpawnNewWave;
+        Enemy.OnAnyEnemyDeath += OnAnyEnemyDeath;
     }
 
     private void Start()
@@ -99,7 +98,12 @@ public class WaveManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        Enemy.OnAnyEnemyDeath -= ReduceRemainingEnemies;
-        Enemy.OnAnyEnemyDeath -= CheckIfShouldSpawnNewWave;
+        Enemy.OnAnyEnemyDeath -= OnAnyEnemyDeath;
+    }
+
+    private void OnAnyEnemyDeath(Enemy deadEnemy)
+    {
+        ReduceRemainingEnemies();
+        CheckIfShouldSpawnNewWave();
     }
 }

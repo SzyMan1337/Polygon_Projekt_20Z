@@ -41,9 +41,9 @@ public class SceneManager : MonoBehaviour
         Enemy.OnAnyEnemyDeath -= IncreasePoints;
     }
 
-    private void IncreasePoints()
+    private void IncreasePoints(Enemy deadEnemy)
     {
-        ++pointsCounter;
+        pointsCounter += deadEnemy.ValueInPoints;
         OnPointsChanged?.Invoke();
     }
 

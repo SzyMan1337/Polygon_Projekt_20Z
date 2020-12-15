@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: shootingRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
+      propertyPath: valueInPoints
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4700851414800392743, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: maxHealth
       value: 20

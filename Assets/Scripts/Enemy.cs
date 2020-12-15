@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Weapon weapon = null;
-    [SerializeField, Range(0, 100)] private int pointsForPlayerOnDeath = 1;
+    [SerializeField, Range(0, 100)] private int valueInPoints = 1;
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 2.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float shootingRange = 50.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float distanceToTarget = 20.0f;
@@ -16,10 +16,11 @@ public class Enemy : MonoBehaviour
     private AudioSource audioSource;
 
 
-    public static event System.Action OnAnyEnemyDeath;
+    public static event System.Action<Enemy> OnAnyEnemyDeath;
 
 
     public HealthComponent Health => health;
+    public int ValueInPoints => valueInPoints;
 
 
     private void Awake()
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
 
         health = GetComponent<HealthComponent>();
         Assert.IsNotNull(health);
-        health.OnDeath += OnAnyEnemyDeath;
+        health.OnDeath += () => { OnAnyEnemyDeath?.Invoke(this); };
         health.OnDeath += PlayAudioOnDeath;
         health.OnHit += PlayAudioOnHit;
 
