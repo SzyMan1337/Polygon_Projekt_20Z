@@ -13,12 +13,15 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Rigidbody body;
     private HealthComponent health;
-    private Weapon weapon;
     private AudioSource audioSource;
-
+    private Weapon weapon;
+    private WeaponManager weaponManager;
 
     public HealthComponent Health => health;
+    public (float, float, float) Position => (body.position.x, body.position.y, body.position.z);
 
+    public WeaponManager WeaponManager => weaponManager;
+    public Rigidbody Body => body;
 
     private void Awake()
     {
@@ -36,7 +39,11 @@ public class PlayerController : MonoBehaviour
         Assert.IsNotNull(health);
         health.OnHit += PlayAudioHit;
 
-        weapon = GetComponentInChildren<Weapon>();
+        weaponManager = GetComponentInChildren<WeaponManager>();
+        Assert.IsNotNull(weaponManager);
+
+        weapon = weaponManager.FirstWeapon;
+        //weapon = GetComponentInChildren<Weapon>();
         Assert.IsNotNull(weapon);
 
         audioSource = GetComponent<AudioSource>();
@@ -98,6 +105,51 @@ public class PlayerController : MonoBehaviour
             {
                 weapon.Shoot();
             }
+
+            // Change weapon
+            if (Input.GetAxis("Mouse ScrollWheel") != 0 && weaponManager.SecondWeapon != null)
+            {
+                weapon = weaponManager.ChangeWeapon();
+                Debug.Log(weapon.name);
+            }
+
+            // Throw weapon
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ThrowWeapon(weaponManager.SecondWeapon);
+            }
+
         }
     }
+    public void PickUpWeapon(Weapon w)
+    {
+        weaponManager.SecondWeapon = w;
+        weapon = w;
+    }
+
+    public void ThrowWeapon(Weapon w)
+    {
+        if (w == null)
+            return;
+
+        if (weapon == weaponManager.SecondWeapon)
+            weapon = weaponManager.ChangeWeapon();
+        (float xWeapon, _, float zWeapon) = PlayerPointingDirection();
+        w.transform.position -= new Vector3(xWeapon*3, 0, zWeapon*3);
+        w.DeactivateWeapon();
+        weaponManager.SecondWeapon = null;
+    }
+
+    public (float, float, float) PlayerPointingDirection()
+    {
+        return (body.transform.forward.x, body.transform.forward.y, body.transform.forward.z);
+    }
+
+    public void PushPlayerBack()
+    {
+        (float x, _, float z) = PlayerPointingDirection();
+        body.transform.position -= new Vector3(x, 0, z);
+    }
+
+
 }

@@ -12,6 +12,11 @@ public class Projectile : MonoBehaviour
 
     public event System.Action OnHitWall;
 
+    public float Speed
+    {
+        get => speed;
+        set => speed = value;
+    }
 
     public float Damage
     {
