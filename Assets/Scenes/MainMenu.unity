@@ -1827,14 +1827,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Movement: W,A,S,D
+  m_text: 'Kill all enemies to win.
+
+
+    Movement: W,A,S,D
 
     Shoot: Mouse Left
 
-    Jump: SPACE
+    Jump:
+    SPACE
 
-    Dash: Left
-    Alt'
+    Dash: Left Alt'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38774b372a1231948b9a0d95ab07f7f8, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 38774b372a1231948b9a0d95ab07f7f8, type: 2}
@@ -1968,23 +1971,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Polygon 2020 Project
-
-
-    Team:
-
-    Wooki
-
-    K_Antonina
-
-    Mariusz
-    Pudzianowski
-
-    SzyMan
-
-    Selthen
-
-    Shweinn'
+  m_text: "KNTG Polygon \nSemestral projects 20Z\n\nMentor:\nWooki\n\nGraphics:\nK_Antonina\n\nProgramming:\nSzyMan\nShweinn\nSelthen\nMariusz
+    Pudzianowski"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38774b372a1231948b9a0d95ab07f7f8, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 38774b372a1231948b9a0d95ab07f7f8, type: 2}

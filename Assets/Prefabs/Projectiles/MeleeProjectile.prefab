@@ -95,9 +95,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5397517355597888807, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397517355597888807, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8129481501962542148, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
       propertyPath: speed
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8129481501962542148, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
       propertyPath: lifetime
