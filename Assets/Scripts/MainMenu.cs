@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void NewGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
 
     public void QuitGame()
