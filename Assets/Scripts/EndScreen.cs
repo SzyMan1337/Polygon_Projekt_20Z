@@ -11,7 +11,9 @@ public class EndScreen : MonoBehaviour
     [SerializeField] private Image cardImage;
     [SerializeField] private Sprite vicotryCard;
     [SerializeField] private Sprite deathCard;
-
+    [SerializeField] private AudioSource vicotrySound;
+    [SerializeField] private AudioSource defeatSound;
+    private AudioSource soundToPlay = null;
 
     private void Awake()
     {
@@ -24,6 +26,8 @@ public class EndScreen : MonoBehaviour
         Assert.IsNotNull(cardImage);
         Assert.IsNotNull(vicotryCard);
         Assert.IsNotNull(deathCard);
+        Assert.IsNotNull(vicotrySound);
+        Assert.IsNotNull(defeatSound);
     }
 
     private void Start()
@@ -40,22 +44,26 @@ public class EndScreen : MonoBehaviour
     private void OnPlayerDeath()
     {
         cardImage.sprite = deathCard;
+        soundToPlay = defeatSound;
         Show();
     }
 
     private void OnVictory()
     {
         cardImage.sprite = vicotryCard;
+        soundToPlay = vicotrySound;
         Show();
     }
 
     private void Show()
     {
+        StopAllAudio();
         WaveManager.OnGameWon -= OnVictory;
         SceneManager.Instance.Player.Health.OnDeath -= OnPlayerDeath;
         SceneManager.Instance?.Player?.SwitchCameraOff();
         Cursor.lockState = CursorLockMode.None;
         mainElements.SetActive(true);
+        soundToPlay.Play();
     }
 
     private void Restart()
@@ -66,5 +74,15 @@ public class EndScreen : MonoBehaviour
     private void ReturnToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    public void StopAllAudio()
+    {
+        AudioSource[] allAudioSources;
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource audioS in allAudioSources)
+        {
+            audioS.Stop();
+        }
     }
 }
