@@ -1,7 +1,55 @@
 fileFormatVersion: 2
 guid: 5ffde7289dfd3fd43bd8a762a7f70809
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2417610962565931444
+    second: CreditsJar_0
+  - first:
+      213: -1466037553556358560
+    second: CreditsJar_0
+  - first:
+      213: 5305692874168722700
+    second: CreditsJar_1
+  - first:
+      213: -8165012131185337603
+    second: CreditsJar_2
+  - first:
+      213: 6077877857129932460
+    second: CreditsJar_3
+  - first:
+      213: -9046504245220061492
+    second: CreditsJar_4
+  - first:
+      213: 4656753498613246571
+    second: CreditsJar_5
+  - first:
+      213: -7560226915595114105
+    second: CreditsJar_6
+  - first:
+      213: 6573284203104054512
+    second: CreditsJar_7
+  - first:
+      213: 4963883755456259858
+    second: CreditsJar_8
+  - first:
+      213: -4504200097126776692
+    second: CreditsJar_9
+  - first:
+      213: -1866512545407723471
+    second: CreditsJar_10
+  - first:
+      213: -5670873652689663307
+    second: CreditsJar_11
+  - first:
+      213: -8689110656930085919
+    second: CreditsJar_12
+  - first:
+      213: 9087998651205326607
+    second: CreditsJar_13
+  - first:
+      213: -5864440869828452206
+    second: CreditsJar_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,17 +89,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.47387674, y: 0.49274352}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 56, y: 21, z: 68, w: 21}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -87,9 +135,39 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CreditsJar_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 18
+        width: 187
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06af3e8cc9697abe0800000000000000
+      internalID: -1466037553556358560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: -11, y: -135}
+      - {x: -90, y: -120}
+      - {x: -101, y: 10}
+      - {x: -68, y: 89}
+      - {x: -50, y: 129}
+      - {x: 27, y: 131}
+      - {x: 54, y: 84}
+      - {x: 82, y: 19}
+      - {x: 85, y: -119}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
