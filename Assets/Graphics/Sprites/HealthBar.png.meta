@@ -110,27 +110,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HealthBar_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 178
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 637ab99e2a1e1dd80800000000000000
-      internalID: -8227546954408941770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: HealthBar_1
       rect:
         serializedVersion: 2
@@ -147,27 +126,6 @@ TextureImporter:
       bones: []
       spriteID: ef6414f545843e3d0800000000000000
       internalID: -3178617384780871938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HealthBar_2
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 170
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0557772a9a086d540800000000000000
-      internalID: 5032351099696674128
       vertices: []
       indices: 
       edges: []
