@@ -42,16 +42,19 @@ public class PlayerController : MonoBehaviour
         weaponManager = GetComponentInChildren<WeaponManager>();
         Assert.IsNotNull(weaponManager);
 
-        weapon = weaponManager.FirstWeapon;
-        //weapon = GetComponentInChildren<Weapon>();
-        Assert.IsNotNull(weapon);
-
         audioSource = GetComponent<AudioSource>();
         Assert.IsNotNull(audioSource);
 
         Assert.IsNotNull(footstepClip);
         Assert.IsNotNull(playerHitClip);
     }
+
+    private void Start()
+    {
+        weapon = weaponManager.CurrentWeapon;
+        Assert.IsNotNull(weapon);
+    }
+
 
     private void PlayAudioHit()
     {
@@ -76,7 +79,7 @@ public class PlayerController : MonoBehaviour
             var ray = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2.0f, camera.pixelHeight / 2.0f));
             if (Physics.Raycast(ray, out var hit))
             {
-                weapon.transform.LookAt(hit.point);
+                weaponManager.transform.LookAt(hit.point); // wm.LookAt
             }
             else
             {
@@ -107,49 +110,42 @@ public class PlayerController : MonoBehaviour
             }
 
             // Change weapon
-            if (Input.GetAxis("Mouse ScrollWheel") != 0 && weaponManager.SecondWeapon != null)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
-                weapon = weaponManager.ChangeWeapon();
+                weaponManager.ChangeWeaponUp();
+                weapon = weaponManager.CurrentWeapon;
                 Debug.Log(weapon.name);
             }
 
-            // Throw weapon
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetAxis("Mouse ScrollWheel") < 0)
             {
-                ThrowWeapon(weaponManager.SecondWeapon);
+                weaponManager.ChangeWeaponDown();
+                weapon = weaponManager.CurrentWeapon;
+                Debug.Log(weapon.name);
+            }
+
+            // Drop weapon
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                DropWeapon();
+                weapon = weaponManager.CurrentWeapon;
             }
 
         }
     }
+    public void DropWeapon()
+    {
+        weaponManager.DetachCurrentWeapon();
+        weapon = weaponManager.CurrentWeapon;
+    }
+
+    // Pick Up weapon
     public void PickUpWeapon(Weapon w)
     {
-        weaponManager.SecondWeapon = w;
-        weapon = w;
+        weaponManager.AddWeapon(w);
+        weapon = weaponManager.CurrentWeapon;
     }
 
-    public void ThrowWeapon(Weapon w)
-    {
-        if (w == null)
-            return;
-
-        if (weapon == weaponManager.SecondWeapon)
-            weapon = weaponManager.ChangeWeapon();
-        (float xWeapon, _, float zWeapon) = PlayerPointingDirection();
-        w.transform.position -= new Vector3(xWeapon*3, 0, zWeapon*3);
-        w.DeactivateWeapon();
-        weaponManager.SecondWeapon = null;
-    }
-
-    public (float, float, float) PlayerPointingDirection()
-    {
-        return (body.transform.forward.x, body.transform.forward.y, body.transform.forward.z);
-    }
-
-    public void PushPlayerBack()
-    {
-        (float x, _, float z) = PlayerPointingDirection();
-        body.transform.position -= new Vector3(x, 0, z);
-    }
 
 
 }
