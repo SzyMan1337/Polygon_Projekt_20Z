@@ -135,8 +135,11 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(playerHitClip);
     }
 
-    public void SwitchCameraOff()
+    public void SwitchCamera()
     {
-        camera?.gameObject.SetActive(false);
+        if(camera.gameObject.activeSelf)
+            camera?.gameObject.SetActive(false);
+        else
+            camera?.gameObject.SetActive(true);
     }
 }
