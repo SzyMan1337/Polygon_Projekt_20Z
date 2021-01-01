@@ -95,10 +95,10 @@ TextureImporter:
       name: HowToPlayBook_0
       rect:
         serializedVersion: 2
-        x: 52
+        x: 50
         y: 32
-        width: 206
-        height: 225
+        width: 210
+        height: 223
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,7 +115,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 552bfcb50eb7f07408b3f49596bc4d6c
     internalID: 0
     vertices: []
     indices: 

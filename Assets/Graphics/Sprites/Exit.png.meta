@@ -36,7 +36,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -100
     wrapU: 1
     wrapV: 1
@@ -95,10 +95,10 @@ TextureImporter:
       name: Exit_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 12
-        width: 238
-        height: 263
+        x: 27
+        y: 18
+        width: 248
+        height: 265
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,7 +115,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 0216697c00471ea42808e1c0cc8c1cd8
     internalID: 0
     vertices: []
     indices: 
