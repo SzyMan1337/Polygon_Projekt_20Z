@@ -63,11 +63,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  valueInPoints: 1
   speed: 2
   shootingRange: 50
   distanceToTarget: 20
   enemyHitClip: {fileID: 8300000, guid: 7d64965d9d021b944a3cda632f742cb8, type: 3}
-  enemyDeathPrefab: {fileID: 6775043610821983624, guid: 5d1b822027490964e90a97f6a814a437, type: 3}
+  enemyDeathPrefab: {fileID: 1368886562889974, guid: df3177fc67fceda4cb1e5acda4964f5c, type: 3}
 --- !u!114 &4700851414800392743
 MonoBehaviour:
   m_ObjectHideFlags: 0

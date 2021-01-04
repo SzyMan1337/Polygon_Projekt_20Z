@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: valueInPoints
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
+      propertyPath: enemyDeathPrefab
+      value: 
+      objectReference: {fileID: 6775043610821983624, guid: 5d1b822027490964e90a97f6a814a437, type: 3}
     - target: {fileID: 4700851414800392743, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: maxHealth
       value: 20
