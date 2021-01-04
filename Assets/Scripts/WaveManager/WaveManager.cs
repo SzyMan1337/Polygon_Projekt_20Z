@@ -65,6 +65,7 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
+        SpawnFog();
         if (actualWaveIndex != 0)
             yield return new WaitForSeconds(timeBetweenWaves);
         else
@@ -72,7 +73,6 @@ public class WaveManager : MonoBehaviour
 
         enemiesRemaining = waves[actualWaveIndex].NumberOfEnemiesToSpawn();
 
-        SpawnFog();
         while (waves[actualWaveIndex].NumberOfEnemiesToSpawn() > 0)
         {
             var enemyType = waves[actualWaveIndex].ChooseEnemyType();
@@ -113,7 +113,10 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnFog()
     {
-        var effectHandler = Instantiate(fogEffectPrefab, transform.position, transform.rotation);
-        Destroy(effectHandler, 2.0f);
+        foreach(var area in spawnAreas)
+        {
+            var effectHandler = Instantiate(fogEffectPrefab, area.transform.position + area.transform.forward*2.5f, Quaternion.Euler(90,0,0));
+            Destroy(effectHandler, 7.0f);
+        }
     }
 }
