@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField, Range(0.0f, 60.0f)] private float timeBeforeFirstWave = 2.0f;
     [SerializeField, Range(0.0f, 60.0f)] private float timeBetweenWaves = 5.0f;
+    [SerializeField] private GameObject fogEffectPrefab = null;
     [SerializeField] private Wave[] waves = null;
     [SerializeField] private BoxCollider[] spawnAreas = null;
 
@@ -30,6 +31,8 @@ public class WaveManager : MonoBehaviour
             Assert.IsFalse(spawnAreasSet.Contains(spawnArea));
             spawnAreasSet.Add(spawnArea);
         }
+
+        Assert.IsNotNull(fogEffectPrefab);
 
         Assert.IsTrue(waves.Length > 0);
         foreach (var wave in waves)
@@ -69,6 +72,7 @@ public class WaveManager : MonoBehaviour
 
         enemiesRemaining = waves[actualWaveIndex].NumberOfEnemiesToSpawn();
 
+        SpawnFog();
         while (waves[actualWaveIndex].NumberOfEnemiesToSpawn() > 0)
         {
             var enemyType = waves[actualWaveIndex].ChooseEnemyType();
@@ -105,5 +109,11 @@ public class WaveManager : MonoBehaviour
     {
         ReduceRemainingEnemies();
         CheckIfShouldSpawnNewWave();
+    }
+
+    private void SpawnFog()
+    {
+        var effectHandler = Instantiate(fogEffectPrefab, transform.position, transform.rotation);
+        Destroy(effectHandler, 2.0f);
     }
 }

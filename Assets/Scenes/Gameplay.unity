@@ -1377,6 +1377,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8687784694755385362, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
+      propertyPath: fogEffectPrefab
+      value: 
+      objectReference: {fileID: 1269120730060968, guid: 1a365141225c22e49a7bb976869b22a8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
 --- !u!1 &1061375128
