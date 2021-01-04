@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour
 
     public HealthComponent Health => health;
 
+    public float Sensitivity
+    {
+        get => sensitivity;
+        set => sensitivity = value;
+    }
 
     private void Awake()
     {

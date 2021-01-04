@@ -316,6 +316,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1127261829}
     m_Modifications:
+    - target: {fileID: 919132149155446097, guid: b1aa2b583b4696140a8b0041e4aef2be, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4971915535291374732, guid: b0eed91ad7f6d1d43b4e98b0896f2f9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.71
@@ -363,10 +367,6 @@ PrefabInstance:
     - target: {fileID: 7208902981961879108, guid: b0eed91ad7f6d1d43b4e98b0896f2f9d, type: 3}
       propertyPath: m_Name
       value: BoardPile (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: b1aa2b583b4696140a8b0041e4aef2be, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0eed91ad7f6d1d43b4e98b0896f2f9d, type: 3}
@@ -1353,6 +1353,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 6904219460542411274, guid: d87e50066e99f054c898b74b63263ad4, type: 3}
+    - target: {fileID: 3030314346041531013, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 0f72c6e8c9382f64f8816d4891fdb2e4, type: 2}
+    - target: {fileID: 4321804815325424324, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 0f72c6e8c9382f64f8816d4891fdb2e4, type: 2}
     - target: {fileID: 6037142278768928119, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2056,6 +2064,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.9968124
       objectReference: {fileID: 0}
+    - target: {fileID: 8212423245963249731, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: d77d3c51504ebf342943f9a3d7f72cc0, type: 2}
     - target: {fileID: 8399195883967000247, guid: 6af131d2b7944ad429f5a25310aa6cc3, type: 3}
       propertyPath: m_Sprite
       value: 
