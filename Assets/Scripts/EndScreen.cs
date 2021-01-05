@@ -60,7 +60,7 @@ public class EndScreen : MonoBehaviour
         StopAllAudio();
         WaveManager.OnGameWon -= OnVictory;
         SceneManager.Instance.Player.Health.OnDeath -= OnPlayerDeath;
-        SceneManager.Instance?.Player?.SwitchCameraOff();
+        SceneManager.Instance?.Player?.SwitchCamera();
         Cursor.lockState = CursorLockMode.None;
         mainElements.SetActive(true);
         soundToPlay.Play();
