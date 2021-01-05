@@ -66,6 +66,6 @@ public class Projectile : MonoBehaviour
     private void PlayWallHitSound()
     {
         var projectileHitWall = Instantiate(projectileHitWallPrefab, transform.position, transform.rotation);
-        Destroy(projectileHitWall, 1f);
+        Destroy(projectileHitWall, 0.5f);
     }
 }
