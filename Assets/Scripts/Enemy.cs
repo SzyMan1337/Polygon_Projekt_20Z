@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.AI;
 
 
 public class Enemy : MonoBehaviour
@@ -11,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0.0f, 1000.0f)] private float distanceToTarget = 20.0f;
     private new Rigidbody rigidbody = null;
     private HealthComponent health = null;
+    private NavMeshAgent navMeshAgent;
 
 
     public static event System.Action<Enemy> OnAnyEnemyDeath;
@@ -31,6 +33,11 @@ public class Enemy : MonoBehaviour
         health = GetComponent<HealthComponent>();
         Assert.IsNotNull(health);
         health.OnDeath += () => { OnAnyEnemyDeath?.Invoke(this); };
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        Assert.IsNotNull(navMeshAgent);
+        navMeshAgent.speed = speed;
+        navMeshAgent.stoppingDistance = Random.Range(0, distanceToTarget);
     }
 
     private void Update()
@@ -38,22 +45,8 @@ public class Enemy : MonoBehaviour
         var player = SceneManager.Instance?.Player;
         if (player != null && player.Health.IsAlive)
         {
-            // Movement towards player
-            if (Vector3.Distance(transform.position, player.transform.position) > distanceToTarget)
-            {
-                var velocityVector = (player.transform.position - transform.position).normalized * speed;
-                velocityVector.y = 0.0f;
-                rigidbody.velocity = velocityVector;
-            }
-            else
-            {
-                rigidbody.velocity = Vector3.zero;
-            }
-
-            // Rotating towards player
-            var rotationVector = new Vector3(transform.rotation.x, Quaternion.LookRotation(player.transform.position - transform.position, transform.up).eulerAngles.y, transform.rotation.z);
-            transform.rotation = Quaternion.Euler(rotationVector);
-
+            navMeshAgent.SetDestination(player.transform.position);
+            
             //Shooting at player
             if (Physics.Raycast(weapon.transform.position, player.transform.position - weapon.transform.position, out var hit, shootingRange))
             {
