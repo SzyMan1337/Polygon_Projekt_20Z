@@ -29,6 +29,10 @@ PrefabInstance:
       propertyPath: m_Acceleration
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2580690703438374372, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
+      propertyPath: m_Speed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: weapon
       value: 

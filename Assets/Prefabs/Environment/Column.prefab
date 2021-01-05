@@ -190,6 +190,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Column
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82e0fe0703327064eb21bac6c0615752, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967263
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82e0fe0703327064eb21bac6c0615752, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82e0fe0703327064eb21bac6c0615752, type: 3}
 --- !u!1 &1406614616020399288 stripped

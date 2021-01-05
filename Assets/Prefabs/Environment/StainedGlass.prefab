@@ -164,13 +164,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: StainedGlass
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 390f04cdf860ee44ca6ad5d7c3ad8a61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6792228460717775785, guid: 390f04cdf860ee44ca6ad5d7c3ad8a61, type: 3}
       propertyPath: m_Name
       value: WallStainedGlass
       objectReference: {fileID: 0}
+    - target: {fileID: 6792228460717775785, guid: 390f04cdf860ee44ca6ad5d7c3ad8a61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792228460717775785, guid: 390f04cdf860ee44ca6ad5d7c3ad8a61, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7604138040668055209, guid: 390f04cdf860ee44ca6ad5d7c3ad8a61, type: 3}
       propertyPath: m_Name
       value: Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604138040668055209, guid: 390f04cdf860ee44ca6ad5d7c3ad8a61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604138040668055209, guid: 390f04cdf860ee44ca6ad5d7c3ad8a61, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 390f04cdf860ee44ca6ad5d7c3ad8a61, type: 3}

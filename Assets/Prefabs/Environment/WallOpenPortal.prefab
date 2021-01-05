@@ -98,6 +98,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallOpenPortal
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 08cd725389dbef248a5703458a18ed29, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967263
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 08cd725389dbef248a5703458a18ed29, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08cd725389dbef248a5703458a18ed29, type: 3}
 --- !u!1 &8079237090109415207 stripped

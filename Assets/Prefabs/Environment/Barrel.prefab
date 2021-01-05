@@ -71,7 +71,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 01f0569eb0a80f84d978aae16b38f694, type: 2}
     - target: {fileID: 919132149155446097, guid: 37c96b7d1cfaf0145822869944527a2b, type: 3}
       propertyPath: m_Name
-      value: Barrel (1)
+      value: Barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37c96b7d1cfaf0145822869944527a2b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967263
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37c96b7d1cfaf0145822869944527a2b, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37c96b7d1cfaf0145822869944527a2b, type: 3}

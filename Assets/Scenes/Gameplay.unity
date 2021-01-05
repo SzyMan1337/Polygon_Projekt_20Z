@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: f6d572b990508bc41b70062c8da8d524, type: 2}
 --- !u!1001 &37838520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 169862648972894570, guid: aa3f0867540c6ac48bbd2747600d8b6f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 169862648972894570, guid: aa3f0867540c6ac48bbd2747600d8b6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4971915535291374732, guid: b0eed91ad7f6d1d43b4e98b0896f2f9d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.215
       objectReference: {fileID: 0}
     - target: {fileID: 4971915535291374732, guid: b0eed91ad7f6d1d43b4e98b0896f2f9d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1515,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 169862648972894570, guid: aa3f0867540c6ac48bbd2747600d8b6f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 169862648972894570, guid: aa3f0867540c6ac48bbd2747600d8b6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2287,7 +2287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4971915535291374732, guid: b0eed91ad7f6d1d43b4e98b0896f2f9d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.247
       objectReference: {fileID: 0}
     - target: {fileID: 4971915535291374732, guid: b0eed91ad7f6d1d43b4e98b0896f2f9d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2598,7 +2598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7784203850326078515, guid: 25475f6bba048da40b995f6bae8af576, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7784203850326078515, guid: 25475f6bba048da40b995f6bae8af576, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

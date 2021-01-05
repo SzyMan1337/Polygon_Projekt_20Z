@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8417071504418928531
 Transform:
@@ -47,6 +47,10 @@ PrefabInstance:
     - target: {fileID: 4011851251631843633, guid: 69184688ed2882941a1a5f99104508a1, type: 3}
       propertyPath: m_Name
       value: StainedGlass
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011851251631843633, guid: 69184688ed2882941a1a5f99104508a1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4388517978846049163, guid: 69184688ed2882941a1a5f99104508a1, type: 3}
       propertyPath: m_LocalPosition.x

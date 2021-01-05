@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Weapon weapon = null;
     [SerializeField, Range(0, 100)] private int valueInPoints = 1;
-    [SerializeField, Range(0.0f, 1000.0f)] private float speed = 2.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float shootingRange = 50.0f;
     [SerializeField, Range(0.0f, 1000.0f)] private float distanceToTarget = 20.0f;
     private new Rigidbody rigidbody = null;
@@ -36,7 +35,6 @@ public class Enemy : MonoBehaviour
 
         navMeshAgent = GetComponent<NavMeshAgent>();
         Assert.IsNotNull(navMeshAgent);
-        navMeshAgent.speed = speed;
         navMeshAgent.stoppingDistance = Random.Range(0, distanceToTarget);
     }
 
