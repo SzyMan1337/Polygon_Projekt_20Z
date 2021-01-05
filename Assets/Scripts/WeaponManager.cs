@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 public class WeaponManager : MonoBehaviour
 {
-    private List<Weapon> weapons = new List<Weapon>(); // weapon[0] is the main weapon - we start the game with it
+    private List<Weapon> weapons = new List<Weapon>(); // weapons[0] is the main weapon - we start the game with it
     private int currentWeapon = 0;
     private int numberOfWeapons = 1;
 
@@ -16,18 +16,13 @@ public class WeaponManager : MonoBehaviour
     {
         weapons.AddRange(GetComponentsInChildren<Weapon>());
         Assert.IsNotNull(weapons);
+        //numberOfWeapons = weapons.Count; // if more initial weapons
         weapons[currentWeapon].OnGround = false;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-            Debug.Log("curr weapon: " + currentWeapon);
     }
 
     public void DetachCurrentWeapon()
     {
-        if (currentWeapon > 0)
+        if (currentWeapon > 0) // pistol (weapons[0]) always in hand
         {
             --numberOfWeapons;
             weapons[currentWeapon].DetachWeapon();
@@ -57,14 +52,16 @@ public class WeaponManager : MonoBehaviour
         currentWeapon = numberOfWeapons - 1;
     }
 
-    public void ChangeWeaponUp()
+    // Change weapon - Scroll up
+    public void ChangeCurrentWeaponUp()
     {
         weapons[currentWeapon].gameObject.SetActive(false);
         currentWeapon = (currentWeapon + 1) % numberOfWeapons;
         weapons[currentWeapon].gameObject.SetActive(true);
     }
 
-    public void ChangeWeaponDown()
+    // Change weapon - Scroll down
+    public void ChangeCurrentWeaponDown()
     {
         weapons[currentWeapon].gameObject.SetActive(false);
         if (currentWeapon == 0)

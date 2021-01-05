@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public WeaponManager WeaponManager => weaponManager;
     public Rigidbody Body => body;
+    public Camera Camera => camera;
 
     private void Awake()
     {
@@ -79,11 +80,12 @@ public class PlayerController : MonoBehaviour
             var ray = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2.0f, camera.pixelHeight / 2.0f));
             if (Physics.Raycast(ray, out var hit))
             {
-                weaponManager.transform.LookAt(hit.point); // wm.LookAt
+                weaponManager.transform.LookAt(hit.point);
             }
             else
             {
-                weapon.transform.localRotation = Quaternion.identity;
+                //weapon.transform.localRotation = Quaternion.identity;
+                weaponManager.transform.localRotation = Quaternion.identity;
             }
 
             if (controller.isGrounded)
@@ -104,27 +106,25 @@ public class PlayerController : MonoBehaviour
             }
 
             // Shooting
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 weapon.Shoot();
             }
 
-            // Change weapon
+            // Weapon change
             if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
-                weaponManager.ChangeWeaponUp();
+                weaponManager.ChangeCurrentWeaponUp();
                 weapon = weaponManager.CurrentWeapon;
-                Debug.Log(weapon.name);
             }
 
             if (Input.GetAxis("Mouse ScrollWheel") < 0)
             {
-                weaponManager.ChangeWeaponDown();
+                weaponManager.ChangeCurrentWeaponDown();
                 weapon = weaponManager.CurrentWeapon;
-                Debug.Log(weapon.name);
             }
 
-            // Drop weapon
+            // Weapon drop
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 DropWeapon();
@@ -133,19 +133,17 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
     public void DropWeapon()
     {
         weaponManager.DetachCurrentWeapon();
         weapon = weaponManager.CurrentWeapon;
     }
 
-    // Pick Up weapon
     public void PickUpWeapon(Weapon w)
     {
         weaponManager.AddWeapon(w);
         weapon = weaponManager.CurrentWeapon;
     }
-
-
 
 }

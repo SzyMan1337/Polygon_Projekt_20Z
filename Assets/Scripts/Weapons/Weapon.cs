@@ -8,10 +8,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform barrelEnd = null;
     [SerializeField, Range(0.0f, 10.0f)] private float timeBetweenShots = 0.2f;
     private float shotCooldown = 0.0f;
-    private float damage = 5.0f;
+    protected float damage = 5.0f;
     private AudioSource audioSource;
     private bool onGround = true;
-    private float pickUpRange = 2.0f;
+    private readonly float pickUpRange = 2.0f;
+
 
     public bool OnGround
     {
@@ -49,7 +50,7 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public virtual void Shoot() // override in bazook
+    public virtual void Shoot() 
     {
         if (shotCooldown <= 0.0f)
         {
@@ -60,13 +61,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void DetachWeapon()
+    public virtual void DetachWeapon()
     {
         // Set parent to null
         transform.SetParent(null);
         onGround = true;
-        
-        // Add force
     }
 
 }

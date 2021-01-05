@@ -1,21 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bazook : Weapon
 {
-    protected override void Awake()
+    private static readonly int maxAmmunitionCount = 3;
+    private int ammunitionCount = maxAmmunitionCount;
+    private readonly float pushBackForce = 3.0f;
+
+
+    public override void Shoot()
     {
-        base.Awake();
+        if (ammunitionCount > 0) 
+        {
+            base.Shoot();
+            --ammunitionCount;
+
+            // push player back
+            SceneManager.Instance.Player.Body.AddForce(SceneManager.Instance.Player.transform.forward * pushBackForce, ForceMode.Impulse);
+        }     
     }
 
-    protected override void Update()
+    public override void DetachWeapon()
     {
-        base.Update();
-        if (Input.GetMouseButton(0))
-        {
-            SceneManager.Instance.Player.PushPlayerBack();
-            Debug.Log("bazzok");
-        }
+        base.DetachWeapon();
+
+        // when dropped the ammunition count resets
+        ammunitionCount = maxAmmunitionCount;
     }
+
 }
