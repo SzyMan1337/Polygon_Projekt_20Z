@@ -115,8 +115,8 @@ public class WaveManager : MonoBehaviour
     {
         foreach(var area in spawnAreas)
         {
-            var effectHandler = Instantiate(fogEffectPrefab, area.transform.position + area.transform.forward*2.0f, Quaternion.Euler(90,0,0));
-            Destroy(effectHandler, 7.0f);
+            var effectHandler = Instantiate(fogEffectPrefab, area.transform.position + area.transform.forward*2, area.transform.rotation* Quaternion.Euler(90, 0, 0));
+            Destroy(effectHandler, 8.0f);
         }
     }
 }
