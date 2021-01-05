@@ -64,6 +64,7 @@ public class PauseMenu : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
+    //TODO: Replace with showing options menu.
     private void Options()
     {
         Resume(false);
