@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4766482964172344}
   - component: {fileID: 198515712515201314}
   - component: {fileID: 199882247417402868}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Flakes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4834,7 +4834,7 @@ GameObject:
   - component: {fileID: 4987838992738908}
   - component: {fileID: 198071485934101746}
   - component: {fileID: 199343395735244938}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9729,7 +9729,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368886562889974}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9879,7 +9879,7 @@ GameObject:
   - component: {fileID: 4439385338259846}
   - component: {fileID: 198227654305840406}
   - component: {fileID: 199244640791240448}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Embers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14619,7 +14619,7 @@ GameObject:
   - component: {fileID: 2822804500500882648}
   - component: {fileID: 116634876480794310}
   - component: {fileID: 2165555936385987291}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19431,7 +19431,7 @@ GameObject:
   - component: {fileID: 6192170548658846088}
   - component: {fileID: 1787749542386166568}
   - component: {fileID: 620354070057657951}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Embers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24173,7 +24173,7 @@ GameObject:
   - component: {fileID: 2612767123035771452}
   - component: {fileID: 8529453034543612024}
   - component: {fileID: 4279040389785701874}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Dissolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24252,7 +24252,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2915102617206681292}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -24306,7 +24306,7 @@ GameObject:
   - component: {fileID: 5021566664534438751}
   - component: {fileID: 4241665097076853563}
   - component: {fileID: 8324463642436842743}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Flakes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
