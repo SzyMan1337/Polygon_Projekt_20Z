@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6562628799719303753
+--- !u!1 &5577794497947026296
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6562628799719303752}
+  - component: {fileID: 5577794497947026297}
   m_Layer: 0
   m_Name: BarrelEnd
   m_TagString: Untagged
@@ -16,21 +16,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6562628799719303752
+--- !u!4 &5577794497947026297
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6562628799719303753}
+  m_GameObject: {fileID: 5577794497947026296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6562628800176162802}
+  m_Father: {fileID: 5577794498403577539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6562628800176160780
+--- !u!1 &5577794498403576125
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,9 +38,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6562628800176162802}
-  - component: {fileID: 8940156503336795589}
-  - component: {fileID: 7608294710838441791}
+  - component: {fileID: 5577794498403577539}
+  - component: {fileID: 5577794498403577538}
+  - component: {fileID: 7668146295710618868}
   m_Layer: 0
   m_Name: Bazook
   m_TagString: Untagged
@@ -48,29 +48,44 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6562628800176162802
+--- !u!4 &5577794498403577539
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6562628800176160780}
+  m_GameObject: {fileID: 5577794498403576125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6562628799719303752}
-  - {fileID: 3399619190508411873}
+  - {fileID: 5577794497947026297}
+  - {fileID: 4131688929908519632}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &8940156503336795589
+--- !u!114 &5577794498403577538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577794498403576125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce224de91c07fab4894d0b030a06e1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 7841760987594920364, guid: 03cc945596423a84ca1f12da797ea18d, type: 3}
+  barrelEnd: {fileID: 5577794497947026297}
+  timeBetweenShots: 0.2
+--- !u!82 &7668146295710618868
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6562628800176160780}
+  m_GameObject: {fileID: 5577794498403576125}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -160,27 +175,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7608294710838441791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6562628800176160780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ee2a495c572884f8960a1e34d47fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 7841760987594920364, guid: 03cc945596423a84ca1f12da797ea18d, type: 3}
-  barrelEnd: {fileID: 0}
-  timeBetweenShots: 0.2
---- !u!1001 &2929423165684169738
+--- !u!1001 &4529508852548310331
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6562628800176162802}
+    m_TransformParent: {fileID: 5577794498403577539}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2243cef472f7e8b4daf82a2fb569935b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,8 +260,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2243cef472f7e8b4daf82a2fb569935b, type: 3}
---- !u!4 &3399619190508411873 stripped
+--- !u!4 &4131688929908519632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2243cef472f7e8b4daf82a2fb569935b, type: 3}
-  m_PrefabInstance: {fileID: 2929423165684169738}
+  m_PrefabInstance: {fileID: 4529508852548310331}
   m_PrefabAsset: {fileID: 0}

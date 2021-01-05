@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5100155293830616453
+--- !u!1 &3025576839714401258
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5100155293830615675}
-  - component: {fileID: 7045196421006108748}
-  - component: {fileID: 8377354544485312107}
+  - component: {fileID: 3025576839714401300}
+  - component: {fileID: 3025576839714401301}
+  - component: {fileID: 1080854004514510371}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -18,29 +18,44 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5100155293830615675
+--- !u!4 &3025576839714401300
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5100155293830616453}
+  m_GameObject: {fileID: 3025576839714401258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5100155294015684545}
-  - {fileID: 3673142395194527336}
+  - {fileID: 3025576840068104622}
+  - {fileID: 6756518335153057799}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &7045196421006108748
+--- !u!114 &3025576839714401301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025576839714401258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce224de91c07fab4894d0b030a06e1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 3606834510517793700, guid: 9146c3820afb6b94cabb896fa5b92c84, type: 3}
+  barrelEnd: {fileID: 3025576840068104622}
+  timeBetweenShots: 0.2
+--- !u!82 &1080854004514510371
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5100155293830616453}
+  m_GameObject: {fileID: 3025576839714401258}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -130,22 +145,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8377354544485312107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5100155293830616453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04111b74c40503740a2edcc85326cd8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 3606834510517793700, guid: 9146c3820afb6b94cabb896fa5b92c84, type: 3}
-  barrelEnd: {fileID: 0}
-  timeBetweenShots: 0.2
---- !u!1 &5100155294015684544
+--- !u!1 &3025576840068104623
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5100155294015684545}
+  - component: {fileID: 3025576840068104622}
   m_Layer: 0
   m_Name: BarrelEnd
   m_TagString: Untagged
@@ -161,26 +161,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5100155294015684545
+--- !u!4 &3025576840068104622
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5100155294015684544}
+  m_GameObject: {fileID: 3025576840068104623}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5100155293830615675}
+  m_Father: {fileID: 3025576839714401300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3851464924542937475
+--- !u!1001 &6505802457523378156
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 5100155293830615675}
+    m_TransformParent: {fileID: 3025576839714401300}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2243cef472f7e8b4daf82a2fb569935b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,8 +260,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2243cef472f7e8b4daf82a2fb569935b, type: 3}
---- !u!4 &3673142395194527336 stripped
+--- !u!4 &6756518335153057799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2243cef472f7e8b4daf82a2fb569935b, type: 3}
-  m_PrefabInstance: {fileID: 3851464924542937475}
+  m_PrefabInstance: {fileID: 6505802457523378156}
   m_PrefabAsset: {fileID: 0}

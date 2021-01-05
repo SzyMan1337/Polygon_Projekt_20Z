@@ -13,9 +13,6 @@ public class Bazook : Weapon
         {
             base.Shoot();
             --ammunitionCount;
-
-            // push player back
-            SceneManager.Instance.Player.Body.AddForce(SceneManager.Instance.Player.transform.forward * pushBackForce, ForceMode.Impulse);
         }     
     }
 
