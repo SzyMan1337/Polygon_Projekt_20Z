@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         set => sensitivity = value;
     }
 
+
     private void Awake()
     {
         camera = GetComponentInChildren<Camera>();
