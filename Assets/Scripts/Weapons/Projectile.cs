@@ -22,13 +22,11 @@ public class Projectile : MonoBehaviour
 
     private void Awake()
     {
+        Assert.IsNotNull(projectileHitWallPrefab);
         var body = GetComponent<Rigidbody>();
         Assert.IsNotNull(body);
-
         body.velocity = transform.forward * speed;
-        OnHitWall += PlayWallHitSound;
-
-        Assert.IsNotNull(projectileHitWallPrefab);
+        OnHitWall += () => { Instantiate(projectileHitWallPrefab, transform.position, transform.rotation); };
     }
 
     private void LateUpdate()
@@ -59,13 +57,6 @@ public class Projectile : MonoBehaviour
         {
             OnHitWall?.Invoke();
         }
-
         Destroy(gameObject);
-    }
-
-    private void PlayWallHitSound()
-    {
-        var projectileHitWall = Instantiate(projectileHitWallPrefab, transform.position, transform.rotation);
-        Destroy(projectileHitWall, 0.5f);
     }
 }

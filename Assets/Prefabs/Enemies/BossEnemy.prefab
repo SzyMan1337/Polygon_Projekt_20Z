@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5705546696830708814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5292823048503640832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d58d87f9ead00334c85241025177d9ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 7
-  damage: 3
-  explosionEffectPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
 --- !u!1 &5682651530663518504
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +184,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1811265639333004429, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
+      propertyPath: effectToSpawnPrefab
+      value: 
+      objectReference: {fileID: 6775043610821983624, guid: 5d1b822027490964e90a97f6a814a437, type: 3}
     - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: MOVEMENT_THRESHOLD
       value: 10
@@ -281,11 +270,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
---- !u!1 &5292823048503640832 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8526555029979436371, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
-  m_PrefabInstance: {fileID: 4550757796625372755}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5893651180611751415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7993324873526877092, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}

@@ -15,6 +15,7 @@ public class EndScreen : MonoBehaviour
     [SerializeField] private AudioSource defeatSound;
     private AudioSource soundToPlay = null;
 
+
     private void Awake()
     {
         Assert.IsNotNull(mainElements);

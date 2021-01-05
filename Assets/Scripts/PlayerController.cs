@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    System.Collections.IEnumerator Dash(Vector3 movementVector)
+    private System.Collections.IEnumerator Dash(Vector3 movementVector)
     {
         float startTime = Time.time;
         while (Time.time < startTime + dashTime)

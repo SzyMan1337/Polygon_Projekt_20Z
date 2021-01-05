@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3772304671130938616}
   - component: {fileID: 4700851414800392743}
   - component: {fileID: 1433333134047493115}
+  - component: {fileID: 4406984513002545201}
+  - component: {fileID: 1811265639333004429}
   m_Layer: 0
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -67,8 +69,6 @@ MonoBehaviour:
   speed: 2
   shootingRange: 50
   distanceToTarget: 20
-  enemyHitClip: {fileID: 8300000, guid: 7d64965d9d021b944a3cda632f742cb8, type: 3}
-  enemyDeathPrefab: {fileID: 1368886562889974, guid: 40b349c68a4fc3c40a0ac2993ed60246, type: 3}
 --- !u!114 &4700851414800392743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e3a8b8ec90cb5834cab7ec25378168a6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7d64965d9d021b944a3cda632f742cb8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -178,3 +178,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4406984513002545201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526555029979436371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2014233d5e23c4ca501046e70012b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1811265639333004429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526555029979436371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6e72723dacea149924e039dc35dea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectToSpawnPrefab: {fileID: 1368886562889974, guid: 40b349c68a4fc3c40a0ac2993ed60246, type: 3}
