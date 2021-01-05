@@ -47,6 +47,8 @@ public class Enemy : MonoBehaviour
 
         navMeshAgent = GetComponent<NavMeshAgent>();
         Assert.IsNotNull(navMeshAgent);
+        navMeshAgent.speed = speed;
+        navMeshAgent.stoppingDistance = Random.Range(0, distanceToTarget);
     }
 
     private void Update()

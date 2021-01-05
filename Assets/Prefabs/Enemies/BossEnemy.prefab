@@ -199,6 +199,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 644653796063416979, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
+      propertyPath: m_AgentTypeID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 644653796063416979, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: MOVEMENT_THRESHOLD
       value: 10
@@ -217,11 +225,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: shootingRange
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: valueInPoints
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772304671130938616, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
+      propertyPath: speed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4700851414800392743, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: maxHealth
