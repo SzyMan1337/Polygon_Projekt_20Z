@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
         var body = GetComponent<Rigidbody>();
         Assert.IsNotNull(body);
 
+        transform.forward = SceneManager.Instance.Player.Camera.transform.forward;
         body.velocity = transform.forward * speed;
         OnHitWall += PlayWallHitSound;
 
