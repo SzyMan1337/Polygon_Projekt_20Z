@@ -93,6 +93,6 @@ public class Enemy : MonoBehaviour
     private void PlayAudioOnDeath()
     {
         var enemyDeath = Instantiate(enemyDeathPrefab, transform.position, transform.rotation);
-        Destroy(enemyDeath, 0.8f);
+        Destroy(enemyDeath, 1.6f);
     }
 }
