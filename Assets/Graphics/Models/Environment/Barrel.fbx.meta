@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: drewno
-    second: {fileID: 2100000, guid: 2ce6077cc53cbcc47bdb2e9429861449, type: 2}
+    second: {fileID: 2100000, guid: 01f0569eb0a80f84d978aae16b38f694, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: metal
-    second: {fileID: 2100000, guid: 757ab30c1ef37bb4da61ceb170b7bd70, type: 2}
+    second: {fileID: 2100000, guid: dd0e7e4146f46724fa8904db98cd8974, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

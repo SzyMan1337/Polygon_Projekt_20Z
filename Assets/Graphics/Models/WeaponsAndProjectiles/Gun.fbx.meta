@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9e3c0f73a35de084da8862f36d8a545a
+guid: 2243cef472f7e8b4daf82a2fb569935b
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,8 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: 260d1bc41e0da9340bbbce9e97799f65, type: 2}
+      name: Material.007
+    second: {fileID: 2100000, guid: 51b9fd8afd331db4ba63f7bab902f18a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: drewno.001
+    second: {fileID: 2100000, guid: 51b9fd8afd331db4ba63f7bab902f18a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.003
+    second: {fileID: 2100000, guid: 757ab30c1ef37bb4da61ceb170b7bd70, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.004
+    second: {fileID: 2100000, guid: 24006190e02e680499d74e6b4cc70326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.005
+    second: {fileID: 2100000, guid: e13e89bed9e275e47b71884c79acb361, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin.001
+    second: {fileID: 2100000, guid: 24006190e02e680499d74e6b4cc70326, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

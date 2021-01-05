@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9e3c0f73a35de084da8862f36d8a545a
+guid: a1cd86edee308d74a86d7982584171d9
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: 260d1bc41e0da9340bbbce9e97799f65, type: 2}
+      name: Copper
+    second: {fileID: 2100000, guid: af4e6f59974b9294993b68139a59515e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold
+    second: {fileID: 2100000, guid: 2a17c0b88cf3cee4bab52303d02170ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 83103c326f6b51341a39f2d30626e33a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
