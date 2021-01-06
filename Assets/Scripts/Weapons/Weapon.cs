@@ -9,7 +9,21 @@ public class Weapon : MonoBehaviour
     [SerializeField, Range(0.0f, 10.0f)] private float timeBetweenShots = 0.2f;
     private float shotCooldown = 0.0f;
     private AudioSource audioSource;
+    private bool onGround = true;
+    private readonly float pickUpRange = 2.0f;
 
+
+    public bool OnGround
+    {
+        get
+        {
+            return onGround;
+        }
+        set
+        {
+            onGround = value;
+        }
+    }
 
     private void Awake()
     {
@@ -24,9 +38,17 @@ public class Weapon : MonoBehaviour
     {
         if(shotCooldown > 0.0f)
             shotCooldown -= Time.deltaTime;
+
+        // Picking up weapon
+        Vector3 distanceToPlayer = SceneManager.Instance.Player.transform.position - transform.position;
+        if (onGround && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.Instance.Player.PickUpWeapon(this);
+            onGround = false;
+        }
     }
 
-    public void Shoot()
+    public virtual void Shoot()
     {
         if (shotCooldown <= 0.0f)
         {
@@ -34,5 +56,12 @@ public class Weapon : MonoBehaviour
             var projectile = Instantiate(projectilePrefab, barrelEnd.position, barrelEnd.rotation);
             audioSource.Play();
         }
+    }
+
+    public virtual void DetachWeapon()
+    {
+        // Set parent to null
+        transform.SetParent(null);
+        onGround = true;
     }
 }

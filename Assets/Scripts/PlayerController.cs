@@ -25,9 +25,12 @@ public class PlayerController : MonoBehaviour
     private HealthComponent health;
     private Weapon weapon;
     private AudioSource audioSource;
+    private WeaponManager weaponManager;
 
 
     public HealthComponent Health => health;
+    public WeaponManager WeaponManager => weaponManager;
+    public Camera Camera => camera;
 
 
     private void Awake()
@@ -53,6 +56,15 @@ public class PlayerController : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         Assert.IsNotNull(audioSource);
+
+        weaponManager = GetComponentInChildren<WeaponManager>();
+        Assert.IsNotNull(weaponManager);
+    }
+
+    private void Start()
+    {
+        weapon = weaponManager.CurrentWeapon;
+        Assert.IsNotNull(weapon);
     }
 
     private void Update()
@@ -113,11 +125,44 @@ public class PlayerController : MonoBehaviour
             }
 
             // Shooting
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 weapon.Shoot();
             }
+
+            // Weapon change
+            if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            {
+                weaponManager.ChangeCurrentWeaponUp();
+                weapon = weaponManager.CurrentWeapon;
+            }
+
+            if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                weaponManager.ChangeCurrentWeaponDown();
+                weapon = weaponManager.CurrentWeapon;
+            }
+
+            // Weapon drop
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                DropWeapon();
+                weapon = weaponManager.CurrentWeapon;
+            }
+
         }
+    }
+
+    public void DropWeapon()
+    {
+        weaponManager.DetachCurrentWeapon();
+        weapon = weaponManager.CurrentWeapon;
+    }
+
+    public void PickUpWeapon(Weapon w)
+    {
+        weaponManager.AddWeapon(w);
+        weapon = weaponManager.CurrentWeapon;
     }
 
     private System.Collections.IEnumerator Dash(Vector3 movementVector)
