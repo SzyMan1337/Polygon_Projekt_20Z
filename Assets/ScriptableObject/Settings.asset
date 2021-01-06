@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8372f1e2d5b0e454197fa4846a17418b, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  mouseSensitivity: 90
+  mouseSensitivity: 450
   musicMixer: {fileID: 24100000, guid: 0f72c6e8c9382f64f8816d4891fdb2e4, type: 2}
   soundsMixer: {fileID: 24100000, guid: d77d3c51504ebf342943f9a3d7f72cc0, type: 2}

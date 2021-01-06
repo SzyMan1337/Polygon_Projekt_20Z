@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
         else
             Pause();
 
-        SceneManager.Instance?.Player?.SwitchCamera();
+        SceneManager.Instance?.Player?.ToggleCamera();
         mainElements.gameObject.SetActive(GameIsPaused);
     }
 

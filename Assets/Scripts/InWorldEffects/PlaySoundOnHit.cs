@@ -12,7 +12,7 @@ public class PlaySoundOnHit : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         Assert.IsNotNull(audioSource);
-        healthComponent = GetComponent<HealthComponent>();
+        healthComponent = GetComponentInParent<HealthComponent>();
         Assert.IsNotNull(healthComponent);
         healthComponent.OnHit += OnHit;
     }

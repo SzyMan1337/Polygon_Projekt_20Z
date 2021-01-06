@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Settings settings;
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 10.0f;
-    [SerializeField] private AudioClip footstepClip;
-    [SerializeField] private AudioClip playerHitClip;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float gravity = -19.62f;
@@ -21,10 +19,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private Camera camera = null;
     private float yRotation = 0.0f;
+    private AudioSource audioSource = null;
     private CharacterController controller;
     private HealthComponent health;
-    private Weapon weapon;
-    private AudioSource audioSource;
     private WeaponManager weaponManager;
 
 
@@ -36,12 +33,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         Assert.IsNotNull(settings);
-        Assert.IsNotNull(footstepClip);
-        Assert.IsNotNull(playerHitClip);
         Assert.IsNotNull(groundCheck);
 
         camera = GetComponentInChildren<Camera>();
         Assert.IsNotNull(camera);
+
+        audioSource = GetComponent<AudioSource>();
+        Assert.IsNotNull(audioSource);
 
         controller = GetComponent<CharacterController>();
         Assert.IsNotNull(controller);
@@ -49,120 +47,114 @@ public class PlayerController : MonoBehaviour
 
         health = GetComponent<HealthComponent>();
         Assert.IsNotNull(health);
-        health.OnHit += PlayAudioHit;
-
-        weapon = GetComponentInChildren<Weapon>();
-        Assert.IsNotNull(weapon);
-
-        audioSource = GetComponent<AudioSource>();
-        Assert.IsNotNull(audioSource);
 
         weaponManager = GetComponentInChildren<WeaponManager>();
         Assert.IsNotNull(weaponManager);
-    }
-
-    private void Start()
-    {
-        weapon = weaponManager.CurrentWeapon;
-        Assert.IsNotNull(weapon);
     }
 
     private void Update()
     {
         if (health.IsAlive && camera.gameObject.activeSelf)
         {
-            float mouseX = Input.GetAxis("Mouse X") * settings.MouseSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * settings.MouseSensitivity * Time.deltaTime;
-
-            yRotation -= mouseY;
-            yRotation = Mathf.Clamp(yRotation, -90.0f, 90.0f);
-
-            // Rotating camera
-            camera.transform.localRotation = Quaternion.Euler(yRotation, 0.0f, 0.0f);
-            transform.Rotate(Vector3.up * mouseX);
-
-            // Controling gun aimpoint
-            var ray = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2.0f, camera.pixelHeight / 2.0f));
-            if (Physics.Raycast(ray, out var hit))
+            LookingUpdate();
+            MovementUpdate();
+            if (weaponManager.HasWeapon)
             {
-                weapon.transform.LookAt(hit.point);
+                WeaponsUpdate();
             }
-            else
-            {
-                weapon.transform.localRotation = Quaternion.identity;
-            }
-
-            // Player movement
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-            if (isGrounded && velocity.y < 0f)
-            {
-                velocity.y = 0f;
-            }
-            Vector3 movementVector = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
-            if (Input.GetButtonDown("Dash") && Time.time > nextDash)
-            {
-                nextDash = Time.time + dashCooldown;
-                StartCoroutine(Dash(movementVector));
-            }
-
-            controller.Move(movementVector * speed * Time.deltaTime);
-            if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
-            if (!isGrounded)
-            {
-                velocity.y += gravity * Time.deltaTime;
-            }
-            controller.Move(velocity * Time.deltaTime);
-
-            // Sound of movement
-            if (isGrounded && movementVector.magnitude > 1.0f && !audioSource.isPlaying)
-            {
-                audioSource.volume = Random.Range(0.7f, 1.0f);
-                audioSource.pitch = Random.Range(0.7f, 1.0f);
-                audioSource.Play();
-            }
-
-            // Shooting
-            if (Input.GetMouseButtonDown(0))
-            {
-                weapon.Shoot();
-            }
-
-            // Weapon change
-            if (Input.GetAxis("Mouse ScrollWheel") > 0)
-            {
-                weaponManager.ChangeCurrentWeaponUp();
-                weapon = weaponManager.CurrentWeapon;
-            }
-
-            if (Input.GetAxis("Mouse ScrollWheel") < 0)
-            {
-                weaponManager.ChangeCurrentWeaponDown();
-                weapon = weaponManager.CurrentWeapon;
-            }
-
-            // Weapon drop
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                DropWeapon();
-                weapon = weaponManager.CurrentWeapon;
-            }
-
         }
     }
 
-    public void DropWeapon()
+    private void LookingUpdate()
     {
-        weaponManager.DetachCurrentWeapon();
-        weapon = weaponManager.CurrentWeapon;
+        float mouseX = Input.GetAxis("Mouse X") * settings.MouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * settings.MouseSensitivity * Time.deltaTime;
+
+        yRotation -= mouseY;
+        yRotation = Mathf.Clamp(yRotation, -90.0f, 90.0f);
+
+        camera.transform.localRotation = Quaternion.Euler(yRotation, 0.0f, 0.0f);
+        transform.Rotate(Vector3.up * mouseX);
     }
 
-    public void PickUpWeapon(Weapon w)
+    private void MovementUpdate()
     {
-        weaponManager.AddWeapon(w);
-        weapon = weaponManager.CurrentWeapon;
+        //Falling down
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if (isGrounded)
+        {
+            if (velocity.y < 0f)
+            {
+                velocity.y = 0f;
+            }
+        }
+        else
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+
+        //Movement
+        var movementVector = (transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical")).normalized;
+        controller.Move(movementVector * speed * Time.deltaTime);
+
+        //Dash
+        if (Input.GetButtonDown("Dash") && Time.time > nextDash)
+        {
+            nextDash = Time.time + dashCooldown;
+            StartCoroutine(Dash(movementVector));
+        }
+
+        //Jump
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        
+        controller.Move(velocity * Time.deltaTime);
+
+        // Sound of movement
+        if (isGrounded && movementVector.magnitude > 1.0f && !audioSource.isPlaying)
+        {
+            audioSource.volume = Random.Range(0.7f, 1.0f);
+            audioSource.pitch = Random.Range(0.7f, 1.0f);
+            audioSource.Play();
+        }
+    }
+
+    private void WeaponsUpdate()
+    {
+        var ray = camera.ScreenPointToRay(new Vector2(camera.pixelWidth / 2.0f, camera.pixelHeight / 2.0f));
+        if (Physics.Raycast(ray, out var hit))
+        {
+            weaponManager.transform.LookAt(hit.point);
+        }
+        else
+        {
+            weaponManager.transform.localRotation = Quaternion.identity;
+        }
+
+        // Shooting
+        if (Input.GetMouseButton(0))
+        {
+            weaponManager.ShootCurrentWeapon();
+        }
+
+        // Weapon change
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            weaponManager.CycleWeaponUp();
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            weaponManager.CycleWeaponDown();
+        }
+
+        // Weapon drop
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            weaponManager.DropCurrentWeapon();
+        }
     }
 
     private System.Collections.IEnumerator Dash(Vector3 movementVector)
@@ -175,12 +167,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayAudioHit()
-    {
-        audioSource.PlayOneShot(playerHitClip);
-    }
-
-    public void SwitchCamera()
+    public void ToggleCamera()
     {
         camera?.gameObject.SetActive(!camera.gameObject.activeSelf);
     }

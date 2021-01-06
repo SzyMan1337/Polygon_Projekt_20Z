@@ -5,70 +5,85 @@ using UnityEngine.Assertions;
 
 public class WeaponManager : MonoBehaviour
 {
-    private List<Weapon> weapons = new List<Weapon>(); // weapons[0] is the main weapon - we start the game with it
-    private int currentWeapon = 0;
-    private int numberOfWeapons = 1;
+    private List<Weapon> weapons = new List<Weapon>();
+    private int currentWeaponIndex = 0;
 
-    public Weapon CurrentWeapon => weapons[currentWeapon];
+
+    public bool HasWeapon => CurrentWeapon != null;
+    private Weapon CurrentWeapon => weapons.Count > 0 ? weapons[currentWeaponIndex] : null;
 
 
     private void Awake()
     {
-        weapons.AddRange(GetComponentsInChildren<Weapon>());
-        Assert.IsNotNull(weapons);
-        //numberOfWeapons = weapons.Count; // if more initial weapons
-        weapons[currentWeapon].OnGround = false;
-    }
-
-    public void DetachCurrentWeapon()
-    {
-        if (currentWeapon > 0) // pistol (weapons[0]) always in hand
+        foreach (var weapon in GetComponentsInChildren<Weapon>())
         {
-            --numberOfWeapons;
-            weapons[currentWeapon].DetachWeapon();
-            weapons.RemoveAt(currentWeapon--);
-            weapons[currentWeapon].gameObject.SetActive(true);
+            PickupWeapon(weapon);
+        }
+        if (weapons.Count > 0)
+        {
+            weapons[currentWeaponIndex].gameObject.SetActive(true);
         }
     }
 
-    public void AddWeapon(Weapon w)
+    private void OnTriggerEnter(Collider other)
     {
-        // Set current weapon to inactive
-        weapons[currentWeapon].gameObject.SetActive(false);
-
-        // Increase number of weapons in hand
-        ++numberOfWeapons;
-
-        // Add weapon
-        weapons.Add(w);
-
-        // Set WeaponManager as parent
-        w.transform.SetParent(this.transform);
-        w.transform.localPosition = Vector3.zero;
-        w.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        w.transform.localScale = Vector3.one;
-
-        // Set the current weapon to the added weapon
-        currentWeapon = numberOfWeapons - 1;
+        var weapon = other.GetComponent<Weapon>();
+        if (weapon != null && !weapons.Contains(weapon))
+        {
+            PickupWeapon(weapon);
+        }
     }
 
-    // Change weapon - Scroll up
-    public void ChangeCurrentWeaponUp()
+    private void PickupWeapon(Weapon weapon)
     {
-        weapons[currentWeapon].gameObject.SetActive(false);
-        currentWeapon = (currentWeapon + 1) % numberOfWeapons;
-        weapons[currentWeapon].gameObject.SetActive(true);
+        Assert.IsNotNull(weapon);
+        weapon.transform.SetParent(this.transform);
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.identity;
+        weapons.Add(weapon);
+        weapon.gameObject.SetActive(false);
     }
 
-    // Change weapon - Scroll down
-    public void ChangeCurrentWeaponDown()
+    public void ShootCurrentWeapon()
     {
-        weapons[currentWeapon].gameObject.SetActive(false);
-        if (currentWeapon == 0)
-            currentWeapon = numberOfWeapons - 1;
-        else
-            currentWeapon = (currentWeapon - 1) % numberOfWeapons;
-        weapons[currentWeapon].gameObject.SetActive(true);
+        CurrentWeapon?.Shoot();
     }
 
+    public void DropCurrentWeapon()
+    {
+        if (HasWeapon && !CurrentWeapon.IsPermanent)
+        {
+            var weapon = CurrentWeapon;
+            weapons.Remove(weapon);
+            Destroy(weapon.gameObject);
+            if (currentWeaponIndex > 0)
+            {
+                --currentWeaponIndex;
+            }
+            if (HasWeapon)
+            {
+                CurrentWeapon.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void CycleWeaponUp()
+    {
+        if (currentWeaponIndex < weapons.Count - 1)
+        {
+            CurrentWeapon.gameObject.SetActive(false);
+            ++currentWeaponIndex;
+            CurrentWeapon.gameObject.SetActive(true);
+        }
+    }
+
+    public void CycleWeaponDown()
+    {
+        if (currentWeaponIndex > 0)
+        {
+            CurrentWeapon.gameObject.SetActive(false);
+            --currentWeaponIndex;
+            CurrentWeapon.gameObject.SetActive(true);
+        }
+    }
 }
