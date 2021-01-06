@@ -11,7 +11,6 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Wave[] waves = null;
     [SerializeField] private BoxCollider[] spawnAreas = null;
 
-    private AudioSource audioSource;
     private int enemiesRemaining = 0;
     private int actualWaveIndex = 0;
 
@@ -35,9 +34,6 @@ public class WaveManager : MonoBehaviour
         foreach (var wave in waves)
             Assert.IsNotNull(wave);
 
-        audioSource = GetComponent<AudioSource>();
-        Assert.IsNotNull(audioSource);
-
         Enemy.OnAnyEnemyDeath += OnAnyEnemyDeath;
     }
 
@@ -51,7 +47,6 @@ public class WaveManager : MonoBehaviour
         if (enemiesRemaining <= 0 && waves.Length > actualWaveIndex)
         {
             OnNewWave?.Invoke();
-            audioSource.Play();
             StartCoroutine(SpawnWave());
         }
         else if (enemiesRemaining <= 0 && waves.Length == actualWaveIndex)

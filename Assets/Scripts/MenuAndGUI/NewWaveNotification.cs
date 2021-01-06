@@ -8,6 +8,7 @@ public class NewWaveNotification : MonoBehaviour
 {
     private TextMeshProUGUI text;
     private const float SHOW_TIME = 2.0f;
+    private AudioSource audioSource;
 
 
     private void Awake()
@@ -18,10 +19,14 @@ public class NewWaveNotification : MonoBehaviour
         WaveManager.OnNewWave += ShowNotification;
 
         text.enabled = false;
+
+        audioSource = GetComponent<AudioSource>();
+        Assert.IsNotNull(audioSource);
     }
 
     private void ShowNotification()
     {
+        audioSource.Play();
         StartCoroutine(DisplayAndWait());
     }
 

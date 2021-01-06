@@ -4,8 +4,8 @@ using UnityEngine.Assertions;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Settings settings;
     [SerializeField, Range(0.0f, 1000.0f)] private float speed = 10.0f;
-    [SerializeField, Range(0.0f, 1000.0f)] private float sensitivity = 90.0f;
     [SerializeField] private AudioClip footstepClip;
     [SerializeField] private AudioClip playerHitClip;
     [SerializeField] private Transform groundCheck;
@@ -29,15 +29,14 @@ public class PlayerController : MonoBehaviour
 
     public HealthComponent Health => health;
 
-    public float Sensitivity
-    {
-        get => sensitivity;
-        set => sensitivity = value;
-    }
-
 
     private void Awake()
     {
+        Assert.IsNotNull(settings);
+        Assert.IsNotNull(footstepClip);
+        Assert.IsNotNull(playerHitClip);
+        Assert.IsNotNull(groundCheck);
+
         camera = GetComponentInChildren<Camera>();
         Assert.IsNotNull(camera);
 
@@ -54,19 +53,14 @@ public class PlayerController : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         Assert.IsNotNull(audioSource);
-
-        Assert.IsNotNull(footstepClip);
-        Assert.IsNotNull(playerHitClip);
-
-        Assert.IsNotNull(groundCheck);
     }
 
     private void Update()
     {
         if (health.IsAlive && camera.gameObject.activeSelf)
         {
-            float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+            float mouseX = Input.GetAxis("Mouse X") * settings.MouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * settings.MouseSensitivity * Time.deltaTime;
 
             yRotation -= mouseY;
             yRotation = Mathf.Clamp(yRotation, -90.0f, 90.0f);

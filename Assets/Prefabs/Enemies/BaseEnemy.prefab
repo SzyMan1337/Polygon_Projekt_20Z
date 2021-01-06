@@ -67,7 +67,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   valueInPoints: 1
-  speed: 2
   shootingRange: 50
   distanceToTarget: 20
 --- !u!114 &4700851414800392743
@@ -92,7 +91,7 @@ AudioSource:
   m_GameObject: {fileID: 8526555029979436371}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: d77d3c51504ebf342943f9a3d7f72cc0, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7d64965d9d021b944a3cda632f742cb8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

@@ -9,7 +9,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject mainElements = null;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button returnToMainMenuButton;
-    [SerializeField] private Button optionsButton;
 
 
     private void Awake()
@@ -20,8 +19,6 @@ public class PauseMenu : MonoBehaviour
         resumeButton.onClick.AddListener(PauseOrResume);
         Assert.IsNotNull(returnToMainMenuButton);
         returnToMainMenuButton.onClick.AddListener(ReturnToMainMenu);
-        Assert.IsNotNull(optionsButton);
-        optionsButton.onClick.AddListener(Options);
     }
 
     private void Update()

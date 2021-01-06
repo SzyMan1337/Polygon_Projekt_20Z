@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df37493bd90d2548846d4f7a1436683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: b3c4553f49d7e694f9dcaec95d7977d2, type: 2}
   speed: 10
-  sensitivity: 600
   footstepClip: {fileID: 8300000, guid: e3a8b8ec90cb5834cab7ec25378168a6, type: 3}
   playerHitClip: {fileID: 8300000, guid: 1f2060630c9de1a4a8c1443a22802008, type: 3}
   groundCheck: {fileID: 5685663979201070516}
@@ -155,7 +155,7 @@ AudioSource:
   m_GameObject: {fileID: 1040166918184403657}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: d77d3c51504ebf342943f9a3d7f72cc0, type: 2}
   m_audioClip: {fileID: 8300000, guid: e3a8b8ec90cb5834cab7ec25378168a6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
