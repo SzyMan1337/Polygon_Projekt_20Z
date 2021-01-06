@@ -12,6 +12,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Wave[] waves = null;
     [SerializeField] private BoxCollider[] spawnAreas = null;
 
+    private List<GameObject> spawnedFogEffects = new List<GameObject>();
     private int enemiesRemaining = 0;
     private int actualWaveIndex = 0;
 
@@ -60,7 +61,11 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
-        SpawnFog();
+        foreach (var area in spawnAreas)
+        {
+            spawnedFogEffects.Add(Instantiate(fogEffectPrefab, area.transform.position, area.transform.rotation));
+        }
+
         if (actualWaveIndex != 0)
             yield return new WaitForSeconds(timeBetweenWaves);
         else
@@ -74,6 +79,12 @@ public class WaveManager : MonoBehaviour
             SpawnOneEnemy(enemyType);
             yield return new WaitForSeconds(waves[actualWaveIndex].TimeBetweenSpawns);
         }
+
+        foreach (var spawnedFogEffect in spawnedFogEffects)
+        {
+            //Destroy(spawnedFogEffect);
+        }
+        spawnedFogEffects.Clear();
 
         ++actualWaveIndex;
     }
@@ -104,14 +115,5 @@ public class WaveManager : MonoBehaviour
     {
         ReduceRemainingEnemies();
         CheckIfShouldSpawnNewWave();
-    }
-
-    private void SpawnFog()
-    {
-        foreach(var area in spawnAreas)
-        {
-            var effectHandler = Instantiate(fogEffectPrefab, area.transform.position + area.transform.forward*2, area.transform.rotation* Quaternion.Euler(90, 0, 0));
-            Destroy(effectHandler, 8.0f);
-        }
     }
 }
