@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4700851414800392743}
   - component: {fileID: 1811265639333004429}
   - component: {fileID: 2580690703438374372}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,6 +170,10 @@ PrefabInstance:
     - target: {fileID: 8708507379372720331, guid: b8e342e73d3d38349ae0964a75288082, type: 3}
       propertyPath: m_Name
       value: PlaySoundOnHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708507379372720331, guid: b8e342e73d3d38349ae0964a75288082, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8e342e73d3d38349ae0964a75288082, type: 3}
