@@ -25,7 +25,6 @@ public class Projectile : MonoBehaviour
         Assert.IsNotNull(projectileHitWallPrefab);
         var body = GetComponent<Rigidbody>();
         Assert.IsNotNull(body);
-        transform.forward = SceneManager.Instance.Player.Camera.transform.forward;
         body.velocity = transform.forward * speed;
         OnHitWall += () => { Instantiate(projectileHitWallPrefab, transform.position, transform.rotation); };
     }
