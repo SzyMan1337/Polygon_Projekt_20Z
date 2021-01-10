@@ -95,6 +95,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.018922828
   m_Center: {x: 0.05576511, y: 0.00028045196, z: 0.012286075}
+--- !u!114 &2019992184657010504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145511129854111485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dfd8c0c3aea09489fac9d24a9e7507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  lifetime: 5
+  damage: 1000
+  projectileHitWallPrefab: {fileID: 7312822868806456655, guid: 753173b463197cb428b1162e0ae400b6, type: 3}
+  range: 5
+  effectToSpawnPrefab: {fileID: 6775043610821983624, guid: 5d1b822027490964e90a97f6a814a437, type: 3}
 --- !u!1001 &356156465054181208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,8 +180,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8129481501962542148, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
+--- !u!1 &9145511129854111485 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8798401455063468453, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
+  m_PrefabInstance: {fileID: 356156465054181208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4046648375280368087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4384754699106786959, guid: 38be7a5586c251b41abdb8aea8464c95, type: 3}
