@@ -92,10 +92,15 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
         }
-
+        
+        Vector3 movementVector = Vector3.zero;
         //Movement
-        var movementVector = (transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical")).normalized;
-        controller.Move(movementVector * speed * Time.deltaTime);
+        if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            movementVector = (transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical")).normalized;
+            Debug.Log(movementVector);
+            controller.Move(movementVector * speed * Time.deltaTime);
+        }
 
         //Dash
         if (Input.GetButtonDown("Dash") && Time.time > nextDash)
