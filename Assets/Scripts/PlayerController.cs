@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private HealthComponent health;
     private WeaponManager weaponManager;
-
+    private Vector3 movementVector;
 
     public HealthComponent Health => health;
     public WeaponManager WeaponManager => weaponManager;
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
         }
         
-        Vector3 movementVector = Vector3.zero;
+        movementVector = Vector3.zero;
         //Movement
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
