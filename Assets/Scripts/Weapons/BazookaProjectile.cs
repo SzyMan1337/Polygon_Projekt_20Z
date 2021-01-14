@@ -27,7 +27,7 @@ public class BazookaProjectile : Projectile
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
         foreach (var collider in colliders)
         {
-            health = collider.GetComponent<HealthComponent>();
+            health = collider.GetComponentInParent<HealthComponent>();
             if (health != null)
             {
                 health.ApplyDamage(Damage);
