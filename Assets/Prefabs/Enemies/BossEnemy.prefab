@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 1811265639333004429, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: effectToSpawnPrefab
       value: 
-      objectReference: {fileID: 6775043610821983624, guid: 5d1b822027490964e90a97f6a814a437, type: 3}
+      objectReference: {fileID: 1368886562889974, guid: 40b349c68a4fc3c40a0ac2993ed60246, type: 3}
     - target: {fileID: 2580690703438374372, guid: 775cf670955c37d438a3f44c60725dbc, type: 3}
       propertyPath: m_Speed
       value: 2
