@@ -98,7 +98,6 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
             movementVector = (transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical")).normalized;
-            Debug.Log(movementVector);
             controller.Move(movementVector * speed * Time.deltaTime);
         }
 
