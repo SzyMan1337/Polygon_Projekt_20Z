@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public HealthComponent Health => health;
     public WeaponManager WeaponManager => weaponManager;
     public Camera Camera => camera;
+    public float Speed { set; get; }
 
 
     private void Awake()
