@@ -6,6 +6,7 @@ public class Rifle : Weapon
 {
     private bool shot = false;
 
+
     protected override void Update()
     {
         base.Update();
@@ -20,7 +21,5 @@ public class Rifle : Weapon
             shot = true;
             base.Shoot();
         }
-
-
     }
 }
