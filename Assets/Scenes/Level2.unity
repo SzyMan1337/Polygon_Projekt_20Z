@@ -8661,6 +8661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStone (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 347059594223717798, guid: dc8d2db6da73a7e4b8000b06e16cc59f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1124440237228480284, guid: dc8d2db6da73a7e4b8000b06e16cc59f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -28.394764
@@ -9118,6 +9122,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9d131bf4da0c33549ad8059ac20b3e40, type: 3}
       propertyPath: m_Name
       value: Rug (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9d131bf4da0c33549ad8059ac20b3e40, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d131bf4da0c33549ad8059ac20b3e40, type: 3}
@@ -10374,6 +10382,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9d131bf4da0c33549ad8059ac20b3e40, type: 3}
       propertyPath: m_Name
       value: Rug
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9d131bf4da0c33549ad8059ac20b3e40, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d131bf4da0c33549ad8059ac20b3e40, type: 3}
