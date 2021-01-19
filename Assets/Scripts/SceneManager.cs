@@ -6,7 +6,8 @@ public class SceneManager : MonoBehaviour
 {
     private static SceneManager instance;
     private PlayerController player;
-    private int pointsCounter = 0;
+    // not clean solution
+    public static int pointsCounter = 0;
 
 
     public event System.Action OnPointsChanged;
