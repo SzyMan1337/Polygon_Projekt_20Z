@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
         Assert.IsNotNull(audioSource);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(shotCooldown > 0.0f)
             shotCooldown -= Time.deltaTime;
