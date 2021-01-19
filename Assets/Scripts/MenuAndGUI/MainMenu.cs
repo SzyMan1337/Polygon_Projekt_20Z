@@ -5,7 +5,8 @@ public class MainMenu : MonoBehaviour
 {
     public void NewGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+        SceneManager.pointsCounter = 0;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 
     public void QuitGame()
