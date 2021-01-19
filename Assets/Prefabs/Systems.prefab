@@ -1803,13 +1803,13 @@ MonoBehaviour:
   cardImage: {fileID: 8156377111702010424}
   deathCard: {fileID: -1188103436523465345, guid: 59acc0c816cd4524f82e2f0b981d1da8, type: 3}
   victoryCards:
-  - {fileID: 1803309927307026927, guid: 902665978d43a044db43e2e877d5b69a, type: 3}
-  - {fileID: 1803309927307026927, guid: 902665978d43a044db43e2e877d5b69a, type: 3}
+  - {fileID: 21300000, guid: dfe312859755bb448bc8347815c9aed2, type: 3}
+  - {fileID: 21300000, guid: 8bc7dc8e7506dc443a331b9c0079da19, type: 3}
   - {fileID: 1803309927307026927, guid: 902665978d43a044db43e2e877d5b69a, type: 3}
   returnToMainMenuButton: {fileID: 5385068816329518085}
   playButton: {fileID: 638154957552493089}
   tryAgainSprite: {fileID: 1887061390024173204, guid: 67dcf61dbc20e424a9871637bd61c41c, type: 3}
-  continueSprite: {fileID: 21300000, guid: cadd1e79f299b78479dd55bef3a2a25e, type: 3}
+  continueSprite: {fileID: 21300000, guid: 4d0cb7c98e3775d4e8ca57102156df9b, type: 3}
   vicotrySound: {fileID: 6051176712714779257}
   defeatSound: {fileID: 920352651707896050}
 --- !u!1 &2543170965145186562
