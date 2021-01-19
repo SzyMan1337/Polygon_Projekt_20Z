@@ -6,27 +6,46 @@ using UnityEngine.Assertions;
 public class EndScreen : MonoBehaviour
 {
     [SerializeField] private GameObject mainElements = null;
-    [SerializeField] private Button restartButton;
-    [SerializeField] private Button returnToMainMenuButton;
+
     [SerializeField] private Image cardImage;
-    [SerializeField] private Sprite vicotryCard;
     [SerializeField] private Sprite deathCard;
+    [SerializeField] private Sprite[] victoryCards;
+
+    [SerializeField] private Button returnToMainMenuButton;
+    [SerializeField] private Button playButton;
+    [SerializeField] private Sprite tryAgainSprite;
+    [SerializeField] private Sprite continueSprite;
+
     [SerializeField] private AudioSource vicotrySound;
     [SerializeField] private AudioSource defeatSound;
+
+    private int numberOfLevels;
+    private int levelIndex;
     private AudioSource soundToPlay = null;
 
 
     private void Awake()
     {
+        numberOfLevels = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings - 1;
+        levelIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+
         Assert.IsNotNull(mainElements);
         mainElements.gameObject.SetActive(false);
-        Assert.IsNotNull(restartButton);
-        restartButton.onClick.AddListener(Restart);
+
+        Assert.IsNotNull(cardImage);
+        Assert.IsNotNull(deathCard);
+        Assert.IsTrue(numberOfLevels == victoryCards.Length);
+        foreach(var victoryCard in victoryCards)
+        {
+            Assert.IsNotNull(victoryCard);
+        }
+
         Assert.IsNotNull(returnToMainMenuButton);
         returnToMainMenuButton.onClick.AddListener(ReturnToMainMenu);
-        Assert.IsNotNull(cardImage);
-        Assert.IsNotNull(vicotryCard);
-        Assert.IsNotNull(deathCard);
+        Assert.IsNotNull(playButton);
+        Assert.IsNotNull(tryAgainSprite);
+        Assert.IsNotNull(continueSprite);
+
         Assert.IsNotNull(vicotrySound);
         Assert.IsNotNull(defeatSound);
     }
@@ -44,6 +63,8 @@ public class EndScreen : MonoBehaviour
 
     private void OnPlayerDeath()
     {
+        playButton.image.sprite = tryAgainSprite;
+        playButton.onClick.AddListener(Restart);
         cardImage.sprite = deathCard;
         soundToPlay = defeatSound;
         Show();
@@ -51,7 +72,18 @@ public class EndScreen : MonoBehaviour
 
     private void OnVictory()
     {
-        cardImage.sprite = vicotryCard;
+        if (levelIndex == numberOfLevels)
+        {
+            playButton.image.sprite = tryAgainSprite;
+            playButton.onClick.AddListener(Restart);
+        }
+        else
+        {
+            playButton.image.sprite = continueSprite;
+            playButton.onClick.AddListener(NextLevel);
+        }
+
+        cardImage.sprite = victoryCards[levelIndex - 1];
         soundToPlay = vicotrySound;
         Show();
     }
@@ -69,12 +101,18 @@ public class EndScreen : MonoBehaviour
 
     private void Restart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        SceneManager.pointsCounter = 0;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 
     private void ReturnToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    private void NextLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(levelIndex + 1);
     }
 
     public void StopAllAudio()

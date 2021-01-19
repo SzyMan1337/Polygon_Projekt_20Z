@@ -175,9 +175,9 @@ RectTransform:
   m_Father: {fileID: 1932340442}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 412.5, y: -250}
   m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &528077247
@@ -508,9 +508,9 @@ RectTransform:
   m_Father: {fileID: 1932340442}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 697.5, y: -250}
   m_SizeDelta: {x: 280, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1019212306
@@ -882,9 +882,9 @@ RectTransform:
   m_Father: {fileID: 1932340442}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1035, y: -250}
   m_SizeDelta: {x: 355, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1579723176
@@ -1060,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2016002880
 Transform:
   m_ObjectHideFlags: 0
@@ -1800,11 +1800,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainElements: {fileID: 7877874786766478574}
-  restartButton: {fileID: 638154957552493089}
-  returnToMainMenuButton: {fileID: 5385068816329518085}
   cardImage: {fileID: 8156377111702010424}
-  vicotryCard: {fileID: 1803309927307026927, guid: 902665978d43a044db43e2e877d5b69a, type: 3}
   deathCard: {fileID: -1188103436523465345, guid: 59acc0c816cd4524f82e2f0b981d1da8, type: 3}
+  victoryCards:
+  - {fileID: 21300000, guid: dfe312859755bb448bc8347815c9aed2, type: 3}
+  - {fileID: 21300000, guid: 8bc7dc8e7506dc443a331b9c0079da19, type: 3}
+  - {fileID: 1803309927307026927, guid: 902665978d43a044db43e2e877d5b69a, type: 3}
+  returnToMainMenuButton: {fileID: 5385068816329518085}
+  playButton: {fileID: 638154957552493089}
+  tryAgainSprite: {fileID: 1887061390024173204, guid: 67dcf61dbc20e424a9871637bd61c41c, type: 3}
+  continueSprite: {fileID: 21300000, guid: 4d0cb7c98e3775d4e8ca57102156df9b, type: 3}
   vicotrySound: {fileID: 6051176712714779257}
   defeatSound: {fileID: 920352651707896050}
 --- !u!1 &2543170965145186562
@@ -1820,7 +1825,7 @@ GameObject:
   - component: {fileID: 7188642189898280718}
   - component: {fileID: 638154957552493089}
   m_Layer: 0
-  m_Name: TryAgainButton
+  m_Name: PlayAgainOrContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2614,7 +2619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8455517608013644258
 Transform:
   m_ObjectHideFlags: 0

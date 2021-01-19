@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private HealthComponent health;
     private WeaponManager weaponManager;
-
+    private Vector3 movementVector;
 
     public HealthComponent Health => health;
     public WeaponManager WeaponManager => weaponManager;
@@ -92,10 +92,14 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
         }
-
+        
+        movementVector = Vector3.zero;
         //Movement
-        var movementVector = (transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical")).normalized;
-        controller.Move(movementVector * speed * Time.deltaTime);
+        if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            movementVector = (transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical")).normalized;
+            controller.Move(movementVector * speed * Time.deltaTime);
+        }
 
         //Dash
         if (Input.GetButtonDown("Dash") && Time.time > nextDash)
