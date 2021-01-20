@@ -19,6 +19,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossWeapon
       objectReference: {fileID: 0}
+    - target: {fileID: 7757863606196266599, guid: a2b8fbc1a8511ab439cd2148e2de339f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 51e8539480da9fe418702e751036afeb, type: 3}
+    - target: {fileID: 7757863606196266599, guid: a2b8fbc1a8511ab439cd2148e2de339f, type: 3}
+      propertyPath: Priority
+      value: 121
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757863606196266599, guid: a2b8fbc1a8511ab439cd2148e2de339f, type: 3}
+      propertyPath: m_Volume
+      value: 0.827
+      objectReference: {fileID: 0}
     - target: {fileID: 9207189180853230489, guid: a2b8fbc1a8511ab439cd2148e2de339f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
