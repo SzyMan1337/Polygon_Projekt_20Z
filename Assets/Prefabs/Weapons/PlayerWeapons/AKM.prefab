@@ -192,8 +192,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8552722690367675383, guid: fe88148c991de13429b3c008713262ba, type: 3}
   barrelEnd: {fileID: 2790882864874947729}
-  timeBetweenShots: 0.2
+  timeBetweenShots: 0.1
   isPermanent: 0
+  name: AKM
+  maxAmmo: 20
 --- !u!65 &6175641361372260870
 BoxCollider:
   m_ObjectHideFlags: 0
