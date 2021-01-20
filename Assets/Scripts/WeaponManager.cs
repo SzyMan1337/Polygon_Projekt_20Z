@@ -5,17 +5,18 @@ using UnityEngine.Assertions;
 
 public class WeaponManager : MonoBehaviour
 {
-    private List<Weapon> weapons = new List<Weapon>();
+    private List<LimitedAmmoWeapon> weapons = new List<LimitedAmmoWeapon>();
     private int currentWeaponIndex = 0;
 
 
-    public bool HasWeapon => CurrentWeapon != null;
-    private Weapon CurrentWeapon => weapons.Count > 0 ? weapons[currentWeaponIndex] : null;
+    public bool HasWeapon => currentWeapon != null;
+    private LimitedAmmoWeapon currentWeapon => weapons.Count > 0 ? weapons[currentWeaponIndex] : null;
+    public LimitedAmmoWeapon CurrentWeapon => currentWeapon;
 
 
     private void Awake()
     {
-        foreach (var weapon in GetComponentsInChildren<Weapon>())
+        foreach (var weapon in GetComponentsInChildren<LimitedAmmoWeapon>())
         {
             PickupWeapon(weapon);
         }
@@ -27,16 +28,25 @@ public class WeaponManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var weapon = other.GetComponent<Weapon>();
+        var weapon = other.GetComponent<LimitedAmmoWeapon>();
         if (weapon != null && !weapons.Contains(weapon))
         {
             PickupWeapon(weapon);
         }
     }
 
-    private void PickupWeapon(Weapon weapon)
+    private void PickupWeapon(LimitedAmmoWeapon weapon)
     {
         Assert.IsNotNull(weapon);
+        foreach(LimitedAmmoWeapon wpn in weapons)
+        {
+            if (string.Equals(wpn.Name, weapon.Name))
+            {
+                wpn.AddAmmo(weapon.MaxAmmo);
+                weapon.gameObject.SetActive(false);
+                return;
+            }
+        }
         weapon.transform.SetParent(this.transform);
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.identity;
@@ -46,14 +56,14 @@ public class WeaponManager : MonoBehaviour
 
     public void ShootCurrentWeapon()
     {
-        CurrentWeapon?.Shoot();
+        currentWeapon?.Shoot();
     }
 
     public void DropCurrentWeapon()
     {
-        if (HasWeapon && !CurrentWeapon.IsPermanent)
+        if (HasWeapon && !currentWeapon.IsPermanent)
         {
-            var weapon = CurrentWeapon;
+            var weapon = currentWeapon;
             weapons.Remove(weapon);
             Destroy(weapon.gameObject);
             if (currentWeaponIndex > 0)
@@ -62,7 +72,7 @@ public class WeaponManager : MonoBehaviour
             }
             if (HasWeapon)
             {
-                CurrentWeapon.gameObject.SetActive(true);
+                currentWeapon.gameObject.SetActive(true);
             }
         }
     }
@@ -71,9 +81,9 @@ public class WeaponManager : MonoBehaviour
     {
         if (currentWeaponIndex < weapons.Count - 1)
         {
-            CurrentWeapon.gameObject.SetActive(false);
+            currentWeapon.gameObject.SetActive(false);
             ++currentWeaponIndex;
-            CurrentWeapon.gameObject.SetActive(true);
+            currentWeapon.gameObject.SetActive(true);
         }
     }
 
@@ -81,9 +91,9 @@ public class WeaponManager : MonoBehaviour
     {
         if (currentWeaponIndex > 0)
         {
-            CurrentWeapon.gameObject.SetActive(false);
+            currentWeapon.gameObject.SetActive(false);
             --currentWeaponIndex;
-            CurrentWeapon.gameObject.SetActive(true);
+            currentWeapon.gameObject.SetActive(true);
         }
     }
 }

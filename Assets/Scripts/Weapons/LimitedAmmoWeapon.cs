@@ -8,7 +8,7 @@ public class LimitedAmmoWeapon : Weapon
 
 
     public int CurrentAmmo => currentAmmo;
-
+    public int MaxAmmo => maxAmmo;
 
     protected override void Awake()
     {
@@ -23,5 +23,10 @@ public class LimitedAmmoWeapon : Weapon
             --currentAmmo;
             base.Shoot();
         }     
+    }
+
+    public void AddAmmo(int amount)
+    {
+        currentAmmo += amount;
     }
 }

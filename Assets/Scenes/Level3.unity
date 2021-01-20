@@ -4867,6 +4867,10 @@ PrefabInstance:
       propertyPath: timeBetweenSpawns
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4321804815325424324, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a73fae4a03b539d45854096a036c5157, type: 3}
     - target: {fileID: 7534282230934746528, guid: f45de9b941c75724aacb4ad16e5b2ea4, type: 3}
       propertyPath: timeBetweenSpawns
       value: 1
