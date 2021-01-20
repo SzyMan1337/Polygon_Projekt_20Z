@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &3581742896142808933
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905724860978309181}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.25}
---- !u!114 &1021753832182379241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905724860978309181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ee2a495c572884f8960a1e34d47fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2019992184657010504, guid: 03cc945596423a84ca1f12da797ea18d, type: 3}
-  barrelEnd: {fileID: 603758117810099367}
-  timeBetweenShots: 2
-  isPermanent: 0
-  maxAmmo: 10
 --- !u!1 &3655996026324266693
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +30,36 @@ Transform:
   m_Father: {fileID: 105074575391620389}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3581742896142808933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905724860978309181}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1021753832182379241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905724860978309181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ee2a495c572884f8960a1e34d47fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2019992184657010504, guid: 03cc945596423a84ca1f12da797ea18d, type: 3}
+  barrelEnd: {fileID: 603758117810099367}
+  timeBetweenShots: 2
+  isPermanent: 0
+  maxAmmo: 10
 --- !u!1001 &2297658702577223204
 PrefabInstance:
   m_ObjectHideFlags: 0
