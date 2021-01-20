@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rifle : Weapon
+public class Rifle : LimitedAmmoWeapon
 {
     private bool shot = false;
 

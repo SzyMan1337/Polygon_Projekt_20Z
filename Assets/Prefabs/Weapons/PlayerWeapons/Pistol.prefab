@@ -177,7 +177,8 @@ MonoBehaviour:
   barrelEnd: {fileID: 6192388129550910800}
   timeBetweenShots: 0.2
   isPermanent: 0
-  maxAmmo: 100
+  name: Pistol
+  maxAmmo: 1000
 --- !u!1 &8702604282676093171
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,7 +59,8 @@ MonoBehaviour:
   barrelEnd: {fileID: 603758117810099367}
   timeBetweenShots: 2
   isPermanent: 0
-  maxAmmo: 10
+  name: RPG
+  maxAmmo: 3
 --- !u!1001 &2297658702577223204
 PrefabInstance:
   m_ObjectHideFlags: 0

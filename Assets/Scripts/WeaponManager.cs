@@ -5,17 +5,17 @@ using UnityEngine.Assertions;
 
 public class WeaponManager : MonoBehaviour
 {
-    private List<Weapon> weapons = new List<Weapon>();
+    private List<LimitedAmmoWeapon> weapons = new List<LimitedAmmoWeapon>();
     private int currentWeaponIndex = 0;
 
 
     public bool HasWeapon => CurrentWeapon != null;
-    private Weapon CurrentWeapon => weapons.Count > 0 ? weapons[currentWeaponIndex] : null;
+    private LimitedAmmoWeapon CurrentWeapon => weapons.Count > 0 ? weapons[currentWeaponIndex] : null;
 
 
     private void Awake()
     {
-        foreach (var weapon in GetComponentsInChildren<Weapon>())
+        foreach (var weapon in GetComponentsInChildren<LimitedAmmoWeapon>())
         {
             PickupWeapon(weapon);
         }
@@ -27,16 +27,29 @@ public class WeaponManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var weapon = other.GetComponent<Weapon>();
+        var weapon = other.GetComponent<LimitedAmmoWeapon>();
         if (weapon != null && !weapons.Contains(weapon))
         {
             PickupWeapon(weapon);
         }
     }
 
-    private void PickupWeapon(Weapon weapon)
+    private void PickupWeapon(LimitedAmmoWeapon weapon)
     {
         Assert.IsNotNull(weapon);
+        foreach(LimitedAmmoWeapon wpn in weapons)
+        {
+            Debug.Log(wpn.Name);
+            Debug.Log(weapon.Name);
+            if (string.Equals(wpn.Name, weapon.Name))
+            {
+                Debug.Log("juz bylo");
+                wpn.AddAmmo(weapon.MaxAmmo);
+                weapon.gameObject.SetActive(false);
+                return;
+            }
+        }
+        Debug.Log("nowa");
         weapon.transform.SetParent(this.transform);
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.identity;

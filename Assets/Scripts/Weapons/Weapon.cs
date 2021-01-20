@@ -8,11 +8,13 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform barrelEnd = null;
     [SerializeField, Range(0.0f, 10.0f)] private float timeBetweenShots = 0.2f;
     [SerializeField] private bool isPermanent = false;
+    [SerializeField] private string name = null;
     protected float shotCooldown = 0.0f;
     private AudioSource audioSource;
 
 
     public bool IsPermanent => isPermanent;
+    public string Name => name;
 
 
     protected virtual void Awake()
