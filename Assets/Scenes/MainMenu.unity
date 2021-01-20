@@ -321,17 +321,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Kill all enemies to win.
-
-
-    Movement: W,A,S,D
-
-    Shoot: Mouse Left
-
-    Jump:
-    SPACE
-
-    Dash: Left Alt'
+  m_text: "Your goal is to survive waves of enemies on 3 different levels. \nTo do
+    that you have to kill them all. \nThey become over time more and more powerful.
+    Be careful. \n\nMovement: W,A,S,D\nShoot: Mouse Left\nJump: SPACE\nDash: Left
+    Alt\nPrevious weapon: Scroll UP\nNext weapon: Scroll Down\nPause: ESC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38774b372a1231948b9a0d95ab07f7f8, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 38774b372a1231948b9a0d95ab07f7f8, type: 2}
