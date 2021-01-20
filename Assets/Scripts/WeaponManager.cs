@@ -9,8 +9,9 @@ public class WeaponManager : MonoBehaviour
     private int currentWeaponIndex = 0;
 
 
-    public bool HasWeapon => CurrentWeapon != null;
-    private LimitedAmmoWeapon CurrentWeapon => weapons.Count > 0 ? weapons[currentWeaponIndex] : null;
+    public bool HasWeapon => currentWeapon != null;
+    private LimitedAmmoWeapon currentWeapon => weapons.Count > 0 ? weapons[currentWeaponIndex] : null;
+    public LimitedAmmoWeapon CurrentWeapon => currentWeapon;
 
 
     private void Awake()
@@ -39,17 +40,13 @@ public class WeaponManager : MonoBehaviour
         Assert.IsNotNull(weapon);
         foreach(LimitedAmmoWeapon wpn in weapons)
         {
-            Debug.Log(wpn.Name);
-            Debug.Log(weapon.Name);
             if (string.Equals(wpn.Name, weapon.Name))
             {
-                Debug.Log("juz bylo");
                 wpn.AddAmmo(weapon.MaxAmmo);
                 weapon.gameObject.SetActive(false);
                 return;
             }
         }
-        Debug.Log("nowa");
         weapon.transform.SetParent(this.transform);
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.identity;
@@ -59,14 +56,14 @@ public class WeaponManager : MonoBehaviour
 
     public void ShootCurrentWeapon()
     {
-        CurrentWeapon?.Shoot();
+        currentWeapon?.Shoot();
     }
 
     public void DropCurrentWeapon()
     {
-        if (HasWeapon && !CurrentWeapon.IsPermanent)
+        if (HasWeapon && !currentWeapon.IsPermanent)
         {
-            var weapon = CurrentWeapon;
+            var weapon = currentWeapon;
             weapons.Remove(weapon);
             Destroy(weapon.gameObject);
             if (currentWeaponIndex > 0)
@@ -75,7 +72,7 @@ public class WeaponManager : MonoBehaviour
             }
             if (HasWeapon)
             {
-                CurrentWeapon.gameObject.SetActive(true);
+                currentWeapon.gameObject.SetActive(true);
             }
         }
     }
@@ -84,9 +81,9 @@ public class WeaponManager : MonoBehaviour
     {
         if (currentWeaponIndex < weapons.Count - 1)
         {
-            CurrentWeapon.gameObject.SetActive(false);
+            currentWeapon.gameObject.SetActive(false);
             ++currentWeaponIndex;
-            CurrentWeapon.gameObject.SetActive(true);
+            currentWeapon.gameObject.SetActive(true);
         }
     }
 
@@ -94,9 +91,9 @@ public class WeaponManager : MonoBehaviour
     {
         if (currentWeaponIndex > 0)
         {
-            CurrentWeapon.gameObject.SetActive(false);
+            currentWeapon.gameObject.SetActive(false);
             --currentWeaponIndex;
-            CurrentWeapon.gameObject.SetActive(true);
+            currentWeapon.gameObject.SetActive(true);
         }
     }
 }
