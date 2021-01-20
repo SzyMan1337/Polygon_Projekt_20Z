@@ -110,7 +110,7 @@ MonoBehaviour:
   speed: 10
   lifetime: 5
   damage: 15
-  projectileHitWallPrefab: {fileID: 7312822868806456655, guid: 753173b463197cb428b1162e0ae400b6, type: 3}
+  projectileHitWallPrefab: {fileID: 1381430012240329179, guid: b0224af5fd02bc844b1c0d2517453b83, type: 3}
   range: 4
   effectToSpawnPrefab: {fileID: 6775043610821983624, guid: 5d1b822027490964e90a97f6a814a437, type: 3}
 --- !u!1001 &356156465054181208
