@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &5525387296172565783
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479897467529438135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.32
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!137 &8801163170720564373
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -52,20 +66,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_DirtyAABB: 0
---- !u!136 &5525387296172565783
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479897467529438135}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.32
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!1001 &750300024524414694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,15 +267,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1863098390973353800, guid: 2e074e56d1daf4048a93aed1b37e3dcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.781
+      value: 0.108
       objectReference: {fileID: 0}
     - target: {fileID: 1863098390973353800, guid: 2e074e56d1daf4048a93aed1b37e3dcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.226
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1863098390973353800, guid: 2e074e56d1daf4048a93aed1b37e3dcd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.009
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1863098390973353800, guid: 2e074e56d1daf4048a93aed1b37e3dcd, type: 3}
       propertyPath: m_LocalRotation.x
